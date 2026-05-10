@@ -7,7 +7,6 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#059669">
     <style>
-        /* 🎨 TEMA WARNA HIJAU */
         :root { 
             --primary: #059669; --primary-dark: #047857; --primary-light: #10B981; --accent: #34D399; 
             --success: #06D6A0; --danger: #EF476F; --warning: #FFD166; --dark: #1B2A4A; 
@@ -409,6 +408,16 @@ window.showReceipt = (tx) => {
   openModal('modalReceipt');
 };
 
+// 🔥 FUNGSI BARU UNTUK MENCETAK TRANSAKSI SPESIFIK
+window.printTransactionReceipt = (txId) => {
+  const tx = window.appState.tx.find(t => t.id === txId);
+  if (!tx) {
+    showToast('❌ Data transaksi tidak ditemukan', 'error');
+    return;
+  }
+  showReceipt(tx);
+};
+
 window.printReceipt = () => { 
   const content = document.getElementById('printableReceipt').innerHTML; 
   const w = window.open('', '_blank'); 
@@ -417,7 +426,13 @@ window.printReceipt = () => {
   w.print(); 
 };
 
-window.openLunasi = (tx) => {
+window.openLunasi = (txId) => {
+  const tx = window.appState.tx.find(t => t.id === txId);
+  if (!tx) {
+    showToast('❌ Data transaksi tidak ditemukan', 'error');
+    return;
+  }
+  
   document.getElementById('lunasiTxId').value = tx.id;
   const amountEl = document.getElementById('lunasiAmount');
   if(amountEl) {
@@ -486,7 +501,13 @@ window.processLunasi = async () => {
   }
 };
 
-window.editTransaction = (tx) => {
+window.editTransaction = (txId) => {
+  const tx = window.appState.tx.find(t => t.id === txId);
+  if (!tx) {
+    showToast('❌ Data transaksi tidak ditemukan', 'error');
+    return;
+  }
+  
   document.getElementById('editOriginalId').value = tx.id; 
   window.currentTxType = tx.type;
   let h = '';
@@ -521,7 +542,17 @@ window.saveEdit = async () => {
   closeModal('modalEdit');
 };
 
-window.deleteTransaction = async (tx) => { if(!confirm('Hapus transaksi ini?')) return; await deleteDoc(doc(db, "transactions", tx.id)); showToast('🗑️ Dihapus', 'success'); };
+window.deleteTransaction = async (txId) => {
+  const tx = window.appState.tx.find(t => t.id === txId);
+  if (!tx) {
+    showToast('❌ Data transaksi tidak ditemukan', 'error');
+    return;
+  }
+  if(!confirm('Hapus transaksi ini?')) return; 
+  await deleteDoc(doc(db, "transactions", txId)); 
+  showToast('🗑️ Dihapus', 'success'); 
+};
+
 window.adjustStock = async () => { const p = document.getElementById('adjustProduct').value; const q = parseFloat(document.getElementById('adjustQty').value); if(!q || q === 0) { showToast('⚠️ Jumlah tidak valid', 'error'); return; } await updateStock(p, q); showToast('✅ Stok disesuaikan', 'success'); };
 window.handleLogoUpload = async (input) => { const f = input.files[0]; if(!f) return; const r = new FileReader(); r.onload = async e => { await setDoc(doc(db, "settings", "logo"), { value: e.target.result }); showToast('✅ Logo updated', 'success'); }; r.readAsDataURL(f); };
 window.filterByType = (type, btn) => { window.currentFilter = type; document.querySelectorAll('#pageTransaksi .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTxHistory(); };
@@ -590,7 +621,8 @@ function renderTxItem(tx) {
   const displayType = tx.type === 'pembayaran_bon' ? 'LUNAS BON' : typeStr;
   const statusTag = tx.settled ? '<span class="tag tag-lunas">LUNAS</span>' : (tx.remainingAmount > 0 ? `<span class="tag tag-partial">BELUM LUNAS (Sisa: ${fmtR(tx.remainingAmount)})</span>` : '');
   
-  return `<div class="tx-item ${tx.type || 'default'}"><div class="tx-header"><span>${displayType}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${payMethod}</span></div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button>` : ''}</div></div></div>`;
+  // 🔥 PERBAIKAN: Gunakan fungsi khusus yang menerima ID
+  return `<div class="tx-item ${tx.type || 'default'}"><div class="tx-header"><span>${displayType}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${payMethod}</span></div><div class="tx-actions"><button class="btn-print" onclick="printTransactionReceipt('${tx.id}')">🖨️</button><button class="btn-edit" onclick="editTransaction('${tx.id}')">✏️</button><button class="btn-delete" onclick="deleteTransaction('${tx.id}')">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi('${tx.id}')">💳 Lunasi</button>` : ''}</div></div></div>`;
 }
 
 function renderTxHistory() {
@@ -612,7 +644,7 @@ function renderDebts() {
   document.getElementById('totalHutang').textContent=fmtR(hu);
   document.getElementById('debtList').innerHTML = debts.length ? debts.map(tx => {
     const p = tx.product?PRODUCTS[tx.product]:null;
-    return `<div class="debt-card" style="border-left-color:${tx.type==='jual'?'var(--success)':'var(--danger)'}"><div class="debt-header"><div><div class="debt-name">${tx.person||'Tanpa Nama'}</div><div class="debt-detail">${p?p.icon+' '+p.name+' × '+tx.qty+' '+p.unit:(tx.description||'')}</div><div class="debt-detail">Total: ${fmtR(tx.total)} | Dibayar: ${fmtR(tx.paidAmount||0)}</div></div><div style="text-align:right"><div class="debt-amount" style="color:${tx.type==='jual'?'var(--success)':'var(--danger)'}">${fmtR(tx.remainingAmount)}</div><div style="font-size:10px;color:var(--gray);margin-top:4px">${tx.type==='jual'?'Piutang':'Hutang'}</div></div></div><div class="debt-actions"><button class="btn btn-success btn-sm" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button></div></div>`;
+    return `<div class="debt-card" style="border-left-color:${tx.type==='jual'?'var(--success)':'var(--danger)'}"><div class="debt-header"><div><div class="debt-name">${tx.person||'Tanpa Nama'}</div><div class="debt-detail">${p?p.icon+' '+p.name+' × '+tx.qty+' '+p.unit:(tx.description||'')}</div><div class="debt-detail">Total: ${fmtR(tx.total)} | Dibayar: ${fmtR(tx.paidAmount||0)}</div></div><div style="text-align:right"><div class="debt-amount" style="color:${tx.type==='jual'?'var(--success)':'var(--danger)'}">${fmtR(tx.remainingAmount)}</div><div style="font-size:10px;color:var(--gray);margin-top:4px">${tx.type==='jual'?'Piutang':'Hutang'}</div></div></div><div class="debt-actions"><button class="btn btn-success btn-sm" onclick="openLunasi('${tx.id}')">💳 Lunasi</button></div></div>`;
   }).join('') : '<div class="empty-state"><h3>Tidak ada hutang/piutang</h3><p>Semua transaksi sudah lunas</p></div>';
 }
 
