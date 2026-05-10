@@ -26,7 +26,7 @@
         .form-group { margin-bottom: 14px; } .form-label { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; display: block; } .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition); background: white; color: var(--dark); } .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,119,182,0.1); } .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 4px 15px rgba(0,119,182,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
         .toggle-group { display: flex; background: var(--gray-light); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 15px; } .toggle-btn { flex: 1; padding: 10px; border: none; background: transparent; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); color: var(--gray); } .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; } .tag-jual { background: #D4EDDA; color: #155724; } .tag-beli { background: #FFF3CD; color: #856404; } .tag-keluar { background: #F8D7DA; color: #721C24; } .tag-modal { background: #D1ECF1; color: #0C5460; } .tag-lunas { background: #C3E6CB; color: #155724; } .tag-bon { background: #F8D7DA; color: #721C24; }
+        .tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; } .tag-jual { background: #D4EDDA; color: #155724; } .tag-beli { background: #FFF3CD; color: #856404; } .tag-keluar { background: #F8D7DA; color: #721C24; } .tag-modal { background: #D1ECF1; color: #0C5460; } .tag-lunas { background: #C3E6CB; color: #155724; } .tag-bon { background: #F8D7DA; color: #721C24; } .tag-partial { background: #FFF3CD; color: #856404; }
         .tx-list { display: flex; flex-direction: column; gap: 10px; } .tx-item { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); transition: var(--transition); } .tx-item.jual { border-left-color: var(--success); } .tx-item.beli { border-left-color: var(--warning); } .tx-item.keluar { border-left-color: var(--danger); } .tx-item.modal { border-left-color: var(--primary-light); }
         .tx-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; } .tx-time { font-size: 11px; color: var(--gray); } .tx-detail { font-size: 13px; color: var(--gray); margin-bottom: 5px; } .tx-amount { font-size: 18px; font-weight: 800; color: var(--dark); } .tx-amount.income { color: var(--success); } .tx-amount.expense { color: var(--danger); } .tx-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--gray-light); }
         .tx-actions { display: flex; gap: 5px; } .tx-actions button { padding: 5px 10px; border: none; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: var(--transition); } .tx-actions .btn-edit { background: #E3F2FD; color: #1565C0; } .tx-actions .btn-delete { background: #FFEBEE; color: #C62828; } .tx-actions .btn-lunasi { background: #E8F5E9; color: #2E7D32; } .tx-actions .btn-print { background: #F3E5F5; color: #7B1FA2; }
@@ -88,18 +88,20 @@
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
-    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value=""><div class="form-group"><label class="form-label">No. Transaksi (Opsional)</label><input type="text" class="form-input" id="txNoTransaksi" placeholder="Kosongkan untuk auto-generate"></div><div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total: <strong id="txTotal">Rp 0</strong></label></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
+    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value=""><div class="form-group"><label class="form-label">No. Transaksi (Opsional)</label><input type="text" class="form-input" id="txNoTransaksi" placeholder="Kosongkan untuk auto-generate"></div><div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total Tagihan: <strong id="txTotalDisplay">Rp 0</strong></label></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah Dibayar</label><input type="number" class="form-input" id="txPaidAmount" placeholder="0" oninput="calculateRemaining()"></div><div class="form-group"><label class="form-label">Sisa (Bon/Hutang)</label><input type="number" class="form-input" id="txRemainingAmount" placeholder="0" readonly style="background:#f8f9fa; cursor:not-allowed;"></div></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
+    
     <div class="modal-overlay" id="modalReceipt"><div class="modal-content"><div class="modal-header"><div class="modal-title">🧾 Struk / Bukti</div><button class="modal-close" onclick="closeModal('modalReceipt')">✕</button></div><div id="receiptContent"></div><div class="btn-group" style="margin-top:15px;"><button class="btn btn-primary" onclick="printReceipt()">🖨️ Cetak</button><button class="btn btn-outline" onclick="closeModal('modalReceipt')">Tutup</button></div></div></div>
-    <div class="modal-overlay" id="modalLunasi"><div class="modal-content"><div class="modal-header"><div class="modal-title">💳 Lunasi Bon / Hutang</div><button class="modal-close" onclick="closeModal('modalLunasi')">✕</button></div><input type="hidden" id="lunasiTxId" value=""><div id="lunasiInfo"></div><div class="form-group"><label class="form-label">Jumlah Dibayar</label><input type="number" class="form-input" id="lunasiAmount" placeholder="0"></div><div class="form-group"><label class="form-label">Metode</label><select class="form-select" id="lunasiMethod"><option value="tunai">Tunai</option><option value="transfer">Transfer</option></select></div><button class="btn btn-success" onclick="processLunasi()">✅ Lunasi</button></div></div>
+    
+    <div class="modal-overlay" id="modalLunasi"><div class="modal-content"><div class="modal-header"><div class="modal-title">💳 Lunasi Transaksi</div><button class="modal-close" onclick="closeModal('modalLunasi')">✕</button></div><input type="hidden" id="lunasiTxId" value=""><div id="lunasiInfo"></div><div class="form-group"><label class="form-label">Jumlah yang akan dibayar</label><input type="number" class="form-input" id="lunasiAmount" placeholder="0"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><select class="form-select" id="lunasiMethod"><option value="tunai">Tunai</option><option value="transfer">Transfer</option></select></div><button class="btn btn-success" onclick="processLunasi()">✅ Konfirmasi Lunasi</button></div></div>
+    
     <div class="modal-overlay" id="modalEdit"><div class="modal-content"><div class="modal-header"><div class="modal-title">✏️ Edit Transaksi</div><button class="modal-close" onclick="closeModal('modalEdit')">✕</button></div><input type="hidden" id="editOriginalId" value=""><div id="editForm"></div><button class="btn btn-primary" onclick="saveEdit()" style="margin-top:15px;">💾 Simpan Perubahan</button></div></div>
 </div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔑 PASTE FIREBASE CONFIG DI SINI
 const firebaseConfig = {
   apiKey: "AIzaSyAKT8aRt3ngwLcIhmXd0EgF6dtr5Ny1oD0",
   authDomain: "super-magic-kelapa.firebaseapp.com",
@@ -129,45 +131,21 @@ async function initStock() {
   for (const [key, value] of Object.entries(PRODUCTS)) {
     const stockRef = doc(db, "stock", key);
     const stockSnap = await getDoc(stockRef);
-    if (!stockSnap.exists()) {
-      await setDoc(stockRef, { product: key, name: value.name, unit: value.unit, qty: 0, createdAt: serverTimestamp() });
-    }
+    if (!stockSnap.exists()) await setDoc(stockRef, { product: key, name: value.name, unit: value.unit, qty: 0, createdAt: serverTimestamp() });
   }
 }
 
 onAuthStateChanged(auth, async (user) => {
-  if (user) { 
-    document.getElementById('loginScreen').style.display='none'; 
-    document.getElementById('appContainer').style.display='block'; 
-    await initStock(); initRealtimeSync(); 
-  } else {
-    document.getElementById('loginScreen').style.display='flex'; 
-    document.getElementById('appContainer').style.display='none'; 
-  }
+  if (user) { document.getElementById('loginScreen').style.display='none'; document.getElementById('appContainer').style.display='block'; await initStock(); initRealtimeSync(); } 
+  else { document.getElementById('loginScreen').style.display='flex'; document.getElementById('appContainer').style.display='none'; }
 });
 
-window.handleLogin = async () => {
-  const u = document.getElementById('loginUser').value.trim();
-  const p = document.getElementById('loginPass').value;
-  const err = document.getElementById('loginError');
-  try { await signInWithEmailAndPassword(auth, u, p); err.textContent = ''; } 
-  catch (e) { err.textContent = 'Email atau password salah'; }
-};
+window.handleLogin = async () => { const u = document.getElementById('loginUser').value.trim(); const p = document.getElementById('loginPass').value; const err = document.getElementById('loginError'); try { await signInWithEmailAndPassword(auth, u, p); err.textContent = ''; } catch (e) { err.textContent = 'Email atau password salah'; } };
 window.handleLogout = async () => { if(!confirm('Yakin keluar?')) return; await signOut(auth); };
 window.closeModal = (id) => document.getElementById(id).classList.remove('show');
 window.openModal = (id) => document.getElementById(id).classList.add('show');
 
-window.switchPage = (p, btn) => {
-  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
-  document.getElementById('page'+p).classList.add('active');
-  btn.classList.add('active');
-  if(p==='Transaksi') renderTxHistory();
-  if(p==='Gudang') renderStock();
-  if(p==='Hutang') renderDebts();
-  if(p==='Laporan') generateReport();
-  if(p==='Dashboard') refreshDashboard();
-};
+window.switchPage = (p, btn) => { document.querySelectorAll('.page').forEach(x => x.classList.remove('active')); document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active')); document.getElementById('page'+p).classList.add('active'); btn.classList.add('active'); if(p==='Transaksi') renderTxHistory(); if(p==='Gudang') renderStock(); if(p==='Hutang') renderDebts(); if(p==='Laporan') generateReport(); if(p==='Dashboard') refreshDashboard(); };
 
 window.openTransaction = (t) => {
   window.currentTxType = t || 'jual';
@@ -181,40 +159,27 @@ window.openTransaction = (t) => {
   openModal('modalTransaction');
 };
 
-window.setTxType = (t) => {
-  window.currentTxType = t;
-  document.querySelectorAll('#typeToggle .toggle-btn').forEach(b => b.classList.remove('active'));
-  const idx = {jual:0, beli:1, keluar:2, modal:3}[t];
-  document.querySelectorAll('#typeToggle .toggle-btn')[idx].classList.add('active');
-  updateFormVisibility();
-  document.getElementById('modalTitle').textContent = '💰 Transaksi ' + {jual:'Penjualan',beli:'Pembelian',keluar:'Pengeluaran',modal:'Tambah Modal'}[t];
-};
-
-function updateFormVisibility() {
-  const show = (window.currentTxType === 'jual' || window.currentTxType === 'beli');
-  document.getElementById('productFields').style.display = show ? 'block' : 'none';
-  document.getElementById('expenseFields').style.display = show ? 'none' : 'block';
-}
-
-window.setPayment = (m) => {
-  window.currentPayment = m;
-  document.getElementById('payTunai').classList.toggle('active', m==='tunai');
-  document.getElementById('payTransfer').classList.toggle('active', m==='transfer');
-  document.getElementById('payBon').classList.toggle('active', m==='bon');
-};
+window.setTxType = (t) => { window.currentTxType = t; document.querySelectorAll('#typeToggle .toggle-btn').forEach(b => b.classList.remove('active')); const idx = {jual:0, beli:1, keluar:2, modal:3}[t]; document.querySelectorAll('#typeToggle .toggle-btn')[idx].classList.add('active'); updateFormVisibility(); document.getElementById('modalTitle').textContent = '💰 Transaksi ' + {jual:'Penjualan',beli:'Pembelian',keluar:'Pengeluaran',modal:'Tambah Modal'}[t]; };
+function updateFormVisibility() { const show = (window.currentTxType === 'jual' || window.currentTxType === 'beli'); document.getElementById('productFields').style.display = show ? 'block' : 'none'; document.getElementById('expenseFields').style.display = show ? 'none' : 'block'; }
+window.setPayment = (m) => { window.currentPayment = m; document.getElementById('payTunai').classList.toggle('active', m==='tunai'); document.getElementById('payTransfer').classList.toggle('active', m==='transfer'); document.getElementById('payBon').classList.toggle('active', m==='bon'); };
 
 function resetTxForm() {
   ['txProduct','txQty','txPrice','txDesc','txAmount','txPerson','txNote','txNoTransaksi'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('txProduct').value = 'kelapa_biji';
-  document.getElementById('txTotal').textContent = 'Rp 0';
+  document.getElementById('txPaidAmount').value = '';
+  document.getElementById('txRemainingAmount').value = '0';
+  document.getElementById('txTotalDisplay').textContent = 'Rp 0';
 }
 
+window.calculateRemaining = () => {
+  const total = (parseFloat(document.getElementById('txQty').value) || 0) * (parseFloat(document.getElementById('txPrice').value) || 0);
+  const paid = parseFloat(document.getElementById('txPaidAmount').value) || 0;
+  document.getElementById('txTotalDisplay').textContent = fmtR(total);
+  document.getElementById('txRemainingAmount').value = Math.max(0, total - paid);
+};
+
 document.addEventListener('input', (e) => {
-  if (e.target.id === 'txQty' || e.target.id === 'txPrice') {
-    const qty = parseFloat(document.getElementById('txQty').value) || 0;
-    const price = parseFloat(document.getElementById('txPrice').value) || 0;
-    document.getElementById('txTotal').textContent = fmtR(qty * price);
-  }
+  if (e.target.id === 'txQty' || e.target.id === 'txPrice' || e.target.id === 'txPaidAmount') calculateRemaining();
 });
 
 async function updateStock(product, qtyChange) {
@@ -230,44 +195,80 @@ async function updateStock(product, qtyChange) {
 window.saveTransaction = async () => {
   const eId = document.getElementById('editTxId').value;
   const customNo = document.getElementById('txNoTransaksi').value.trim();
-  let tx = { id: eId || crypto.randomUUID(), type: window.currentTxType, timestamp: serverTimestamp(), payment: window.currentPayment, person: document.getElementById('txPerson').value.trim(), note: document.getElementById('txNote').value.trim(), settled: false, paidAmount: 0, remainingAmount: 0, customNo: customNo || null };
+  const paid = parseFloat(document.getElementById('txPaidAmount').value) || 0;
+  let tx = { id: eId || crypto.randomUUID(), type: window.currentTxType, timestamp: serverTimestamp(), paymentMethod: window.currentPayment, person: document.getElementById('txPerson').value.trim(), note: document.getElementById('txNote').value.trim(), settled: false, customNo: customNo || null, payments: [] };
   
   if (window.currentTxType === 'jual' || window.currentTxType === 'beli') {
     const q = parseFloat(document.getElementById('txQty').value); const p = parseFloat(document.getElementById('txPrice').value);
     if(!q || !p || q <= 0 || p <= 0) { showToast('⚠️ Jumlah & harga wajib >0', 'error'); return; }
     tx.product = document.getElementById('txProduct').value; tx.qty = q; tx.price = p; tx.total = q * p;
+    tx.paidAmount = Math.min(paid, tx.total);
+    tx.remainingAmount = tx.total - tx.paidAmount;
+    tx.payments = [{ amount: tx.paidAmount, method: window.currentPayment, date: serverTimestamp() }];
+    if(tx.remainingAmount <= 0) tx.settled = true;
   } else {
     const a = parseFloat(document.getElementById('txAmount').value); if(!a || a <= 0) { showToast('⚠️ Jumlah wajib >0', 'error'); return; }
-    tx.description = document.getElementById('txDesc').value.trim(); tx.total = a;
+    tx.description = document.getElementById('txDesc').value.trim(); tx.total = a; tx.paidAmount = a; tx.remainingAmount = 0; tx.settled = true; tx.payments = [{ amount: a, method: window.currentPayment, date: serverTimestamp() }];
   }
-  if (window.currentPayment === 'bon') tx.remainingAmount = tx.total; else tx.paidAmount = tx.total;
+  
   await setDoc(doc(db, "transactions", tx.id), tx);
-  if(tx.type === 'jual' || tx.type === 'beli') {
-    await updateStock(tx.product, window.currentTxType === 'jual' ? -tx.qty : tx.qty);
-    showToast(`✅ Transaksi disimpan! Stok ${window.currentTxType === 'jual' ? 'berkurang' : 'bertambah'} ${Math.abs(tx.qty)} ${PRODUCTS[tx.product]?.unit || ''}`, 'success');
-  } else showToast('✅ Transaksi disimpan!', 'success');
+  if(tx.type === 'jual' || tx.type === 'beli') await updateStock(tx.product, window.currentTxType === 'jual' ? -tx.qty : tx.qty);
+  showToast(tx.settled ? '✅ Transaksi disimpan & LUNAS!' : `✅ Disimpan! Dibayar ${fmtR(tx.paidAmount)}. Sisa: ${fmtR(tx.remainingAmount)}`, 'success');
   closeModal('modalTransaction'); showReceipt(tx);
 };
 
 window.showReceipt = (tx) => {
   const p = tx.product ? PRODUCTS[tx.product] : null;
   const displayNo = tx.customNo || tx.id.substring(0,8);
-  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Super Magic</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
+  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Jefmanado</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
   if(p) html += `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div><div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div><div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>`;
   else html += `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`;
-  html += `<div class="receipt-row"><span>Bayar</span><span>${tx.payment.toUpperCase()}</span></div><div class="receipt-divider"></div><div class="receipt-total">${fmtR(tx.total)}</div><div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
+  html += `<div class="receipt-row"><span>Total</span><span>${fmtR(tx.total)}</span></div><div class="receipt-row"><span>Dibayar</span><span>${fmtR(tx.paidAmount||0)}</span></div>${tx.remainingAmount>0?`<div class="receipt-row"><span>Sisa</span><span>${fmtR(tx.remainingAmount)}</span></div>`:''}<div class="receipt-divider"></div><div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
   document.getElementById('receiptContent').innerHTML = html; openModal('modalReceipt');
 };
 
-window.printReceipt = () => {
-  const content = document.getElementById('printableReceipt').innerHTML;
-  const w = window.open('', '_blank'); w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${content}</body></html>`); w.document.close(); w.print();
+window.printReceipt = () => { const content = document.getElementById('printableReceipt').innerHTML; const w = window.open('', '_blank'); w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${content}</body></html>`); w.document.close(); w.print(); };
+
+// 🔥 FUNGSI LUNASI BARU
+window.openLunasi = (tx) => {
+  document.getElementById('lunasiTxId').value = tx.id;
+  document.getElementById('lunasiAmount').value = tx.remainingAmount || 0;
+  document.getElementById('lunasiAmount').max = tx.remainingAmount;
+  document.getElementById('lunasiInfo').innerHTML = `
+    <div style="background:#f8f9fa; padding:12px; border-radius:8px; margin-bottom:15px; font-size:13px;">
+      <div style="font-weight:700; margin-bottom:5px;">${tx.person || 'Tanpa Nama'} • ${tx.type.toUpperCase()}</div>
+      <div>Total: ${fmtR(tx.total)} | Dibayar: ${fmtR(tx.paidAmount||0)}</div>
+      <div style="color:var(--danger); font-weight:700; margin-top:5px;">Sisa Hutang/Piutang: ${fmtR(tx.remainingAmount)}</div>
+    </div>`;
+  openModal('modalLunasi');
 };
 
 window.processLunasi = async () => {
-  const id = document.getElementById('lunasiTxId').value; const amt = parseFloat(document.getElementById('lunasiAmount').value); const tx = window.appState.tx.find(t => t.id === id); if(!tx) return;
-  tx.paidAmount += amt; tx.remainingAmount -= amt; if(tx.remainingAmount <= 0) { tx.remainingAmount = 0; tx.settled = true; }
-  await setDoc(doc(db, "transactions", id), tx); showToast('✅ Bon dilunasi!', 'success'); closeModal('modalLunasi');
+  const id = document.getElementById('lunasiTxId').value;
+  const payAmount = parseFloat(document.getElementById('lunasiAmount').value) || 0;
+  const method = document.getElementById('lunasiMethod').value;
+  if(payAmount <= 0) return showToast('⚠️ Masukkan jumlah valid', 'error');
+
+  const txRef = doc(db, "transactions", id);
+  const txSnap = await getDoc(txRef);
+  if(!txSnap.exists()) return;
+  const tx = txSnap.data();
+
+  const newPaid = (tx.paidAmount || 0) + payAmount;
+  const newRemaining = (tx.total || 0) - newPaid;
+  const isSettled = newRemaining <= 0;
+  const newPayment = { amount: payAmount, method: method, date: serverTimestamp() };
+  const updatedPayments = [...(tx.payments || []), newPayment];
+
+  await updateDoc(txRef, {
+    paidAmount: newPaid,
+    remainingAmount: newRemaining < 0 ? 0 : newRemaining,
+    settled: isSettled,
+    payments: updatedPayments
+  });
+
+  showToast(isSettled ? '✅ Transaksi LUNAS! Saldo & Hutang otomatis terupdate.' : `✅ Dibayar ${fmtR(payAmount)}. Sisa: ${fmtR(Math.max(0, newRemaining))}`, 'success');
+  closeModal('modalLunasi');
 };
 
 window.editTransaction = (tx) => {
@@ -275,32 +276,23 @@ window.editTransaction = (tx) => {
   let h = '';
   if(tx.type==='jual'||tx.type==='beli') h = `<div class="form-group"><label>Produk</label><select class="form-select" id="editProduct">${Object.entries(PRODUCTS).map(([k,v])=>`<option value="${k}" ${k===tx.product?'selected':''}>${v.icon} ${v.name} (${v.unit})</option>`).join('')}</select></div><div class="input-row"><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editQty" value="${tx.qty}" step="0.01"></div><div class="form-group"><label>Harga</label><input type="number" class="form-input" id="editPrice" value="${tx.price}"></div></div>`;
   else h = `<div class="form-group"><label>Ket</label><input type="text" class="form-input" id="editDesc" value="${tx.description||''}"></div><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editAmount" value="${tx.total}"></div>`;
-  h += `<div class="form-group"><label>Nama</label><input type="text" class="form-input" id="editPerson" value="${tx.person||''}"></div><div class="form-group"><label>Bayar</label><select class="form-select" id="editPayment"><option value="tunai" ${tx.payment==='tunai'?'selected':''}>Tunai</option><option value="transfer" ${tx.payment==='transfer'?'selected':''}>Transfer</option><option value="bon" ${tx.payment==='bon'?'selected':''}>Bon</option></select></div><div class="form-group"><label>Catatan</label><input type="text" class="form-input" id="editNote" value="${tx.note||''}"></div>`;
+  h += `<div class="form-group"><label>Nama</label><input type="text" class="form-input" id="editPerson" value="${tx.person||''}"></div><div class="form-group"><label>Bayar</label><select class="form-select" id="editPayment"><option value="tunai" ${tx.paymentMethod==='tunai'?'selected':''}>Tunai</option><option value="transfer" ${tx.paymentMethod==='transfer'?'selected':''}>Transfer</option><option value="bon" ${tx.paymentMethod==='bon'?'selected':''}>Bon</option></select></div><div class="form-group"><label>Catatan</label><input type="text" class="form-input" id="editNote" value="${tx.note||''}"></div>`;
   document.getElementById('editForm').innerHTML = h; openModal('modalEdit');
 };
 
 window.saveEdit = async () => {
   const id = document.getElementById('editOriginalId').value; let tx = window.appState.tx.find(t => t.id === id); if(!tx) return;
-  tx.type = window.currentTxType; tx.payment = document.getElementById('editPayment').value; tx.person = document.getElementById('editPerson').value.trim(); tx.note = document.getElementById('editNote').value.trim();
+  tx.type = window.currentTxType; tx.paymentMethod = document.getElementById('editPayment').value; tx.person = document.getElementById('editPerson').value.trim(); tx.note = document.getElementById('editNote').value.trim();
   if(tx.type === 'jual' || tx.type === 'beli') { const q = parseFloat(document.getElementById('editQty').value); const p = parseFloat(document.getElementById('editPrice').value); tx.product = document.getElementById('editProduct').value; tx.qty = q; tx.price = p; tx.total = q*p; } else { tx.description = document.getElementById('editDesc').value.trim(); tx.total = parseFloat(document.getElementById('editAmount').value); }
-  if(tx.payment === 'bon' && !tx.settled) tx.remainingAmount = tx.total - (tx.paidAmount||0);
   await setDoc(doc(db, "transactions", id), tx); showToast('✅ Update berhasil!', 'success'); closeModal('modalEdit');
 };
 
 window.deleteTransaction = async (tx) => { if(!confirm('Hapus transaksi ini?')) return; await deleteDoc(doc(db, "transactions", tx.id)); showToast('🗑️ Dihapus', 'success'); };
 window.adjustStock = async () => { const p = document.getElementById('adjustProduct').value; const q = parseFloat(document.getElementById('adjustQty').value); if(!q || q === 0) { showToast('⚠️ Jumlah tidak valid', 'error'); return; } await updateStock(p, q); showToast('✅ Stok disesuaikan', 'success'); };
 window.handleLogoUpload = async (input) => { const f = input.files[0]; if(!f) return; const r = new FileReader(); r.onload = async e => { await setDoc(doc(db, "settings", "logo"), { value: e.target.result }); showToast('✅ Logo updated', 'success'); }; r.readAsDataURL(f); };
-
 window.filterByType = (type, btn) => { window.currentFilter = type; document.querySelectorAll('#pageTransaksi .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTxHistory(); };
 window.filterTransactions = () => renderTxHistory();
-
-window.setReportPeriod = (p, btn) => {
-  window.currentReportPeriod = p;
-  document.querySelectorAll('#pageLaporan .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('customDateRange').style.display = p === 'custom' ? 'block' : 'none';
-  if(p !== 'custom') generateReport();
-};
+window.setReportPeriod = (p, btn) => { window.currentReportPeriod = p; document.querySelectorAll('#pageLaporan .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.getElementById('customDateRange').style.display = p === 'custom' ? 'block' : 'none'; if(p !== 'custom') generateReport(); };
 
 const fmtR = n => 'Rp ' + Number(n||0).toLocaleString('id-ID');
 const getTs = ts => ts?.seconds ? ts.seconds * 1000 : (typeof ts === 'number' ? ts : Date.now());
@@ -321,10 +313,8 @@ function initRealtimeSync() {
   onSnapshot(collection(db, "settings"), (snap) => { window.appState.settings = {}; snap.forEach(d => window.appState.settings[d.id] = d.data()); });
 }
 
-// 🔥 FUNGSI RINGKASAN BISNIS YANG DIPERBAIKI
 function refreshDashboard() {
-  let totalSaldo = 0;
-  let statJual = 0, statBeli = 0, statKeluar = 0, statModal = 0;
+  let totalSaldo = 0, statJual = 0, statBeli = 0, statKeluar = 0, statModal = 0;
   let todayIncome = 0, todayExpense = 0;
   const todayStart = new Date(); todayStart.setHours(0,0,0,0);
 
@@ -333,25 +323,21 @@ function refreshDashboard() {
     const paid = tx.paidAmount || 0;
     const ts = getTs(tx.timestamp);
 
-    // 1. Hitung Ringkasan Total (Gross Transaction Value)
     if(tx.type === 'jual') statJual += total;
     else if(tx.type === 'beli') statBeli += total;
     else if(tx.type === 'keluar') statKeluar += total;
     else if(tx.type === 'modal') statModal += total;
 
-    // 2. Hitung Saldo Riil (Arus Kas Masuk/Keluar)
     if(tx.type === 'jual' || tx.type === 'pembayaran_bon') totalSaldo += paid;
     else if(tx.type === 'beli' || tx.type === 'keluar') totalSaldo -= paid;
     else if(tx.type === 'modal') totalSaldo += paid;
 
-    // 3. Hitung Pemasukan/Pengeluaran Hari Ini
     if(ts >= todayStart.getTime()) {
       if(tx.type === 'jual' || tx.type === 'pembayaran_bon') todayIncome += paid;
       else if(tx.type === 'beli' || tx.type === 'keluar') todayExpense += paid;
     }
   });
 
-  // Update semua elemen HTML
   document.getElementById('currentBalance').textContent = fmtR(totalSaldo);
   document.getElementById('todayIncome').textContent = fmtR(todayIncome);
   document.getElementById('todayExpense').textContent = fmtR(todayExpense);
@@ -359,14 +345,13 @@ function refreshDashboard() {
   document.getElementById('statPembelian').textContent = fmtR(statBeli);
   document.getElementById('statPengeluaran').textContent = fmtR(statKeluar);
   document.getElementById('statModal').textContent = fmtR(statModal);
-
-  // Update list transaksi terakhir
   document.getElementById('recentTransactions').innerHTML = window.appState.tx.slice(0,5).map(renderTxItem).join('') || '<div class="empty-state">Belum ada transaksi</div>';
 }
 
 function renderTxItem(tx) {
   const no = tx.customNo || tx.id.substring(0,8);
-  return `<div class="tx-item ${tx.type}"><div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>#${no}</span></div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${tx.payment==='bon' && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="processLunasi()">💳</button>` : ''}</div></div>`;
+  const statusTag = tx.settled ? '<span class="tag tag-lunas">LUNAS</span>' : (tx.remainingAmount > 0 ? `<span class="tag tag-partial">BELUM LUNAS (Sisa: ${fmtR(tx.remainingAmount)})</span>` : '');
+  return `<div class="tx-item ${tx.type}"><div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${tx.paymentMethod||'-'}</span></div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button>` : ''}</div></div></div>`;
 }
 
 function renderTxHistory() {
@@ -381,88 +366,38 @@ function renderStock() {
 }
 
 function renderDebts() {
-  const debts = window.appState.tx.filter(tx => tx.payment === 'bon' && tx.remainingAmount > 0);
-  document.getElementById('debtList').innerHTML = debts.map(d => `<div class="debt-card"><div>${d.person||'-'}</div><div>${fmtR(d.remainingAmount)}</div></div>`).join('') || '<div class="empty-state">Tidak ada bon</div>';
+  const debts = window.appState.tx.filter(tx => tx.remainingAmount > 0);
+  let pi=0, hu=0;
+  debts.forEach(tx => { if(tx.type==='jual') pi+=tx.remainingAmount; else if(tx.type==='beli') hu+=tx.remainingAmount; });
+  document.getElementById('totalPiutang').textContent=fmtR(pi);
+  document.getElementById('totalHutang').textContent=fmtR(hu);
+  document.getElementById('debtList').innerHTML = debts.length ? debts.map(tx => {
+    const p = tx.product?PRODUCTS[tx.product]:null;
+    return `<div class="debt-card" style="border-left-color:${tx.type==='jual'?'var(--success)':'var(--danger)'}"><div class="debt-header"><div><div class="debt-name">${tx.person||'Tanpa Nama'}</div><div class="debt-detail">${p?p.icon+' '+p.name+' × '+tx.qty+' '+p.unit:(tx.description||'')}</div><div class="debt-detail">Total: ${fmtR(tx.total)} | Dibayar: ${fmtR(tx.paidAmount||0)}</div></div><div style="text-align:right"><div class="debt-amount" style="color:${tx.type==='jual'?'var(--success)':'var(--danger)'}">${fmtR(tx.remainingAmount)}</div><div style="font-size:10px;color:var(--gray);margin-top:4px">${tx.type==='jual'?'Piutang':'Hutang'}</div></div></div><div class="debt-actions"><button class="btn btn-success btn-sm" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button></div></div>`;
+  }).join('') : '<div class="empty-state"><h3>Tidak ada hutang/piutang</h3><p>Semua transaksi sudah lunas</p></div>';
 }
 
 window.generateReport = () => {
-  const period = window.currentReportPeriod;
-  const now = Date.now();
-  let start = 0, end = now, label = 'Laporan Semua Periode';
-
-  if (period === 'hari') {
-    const d = new Date(); d.setHours(0,0,0,0); start = d.getTime();
-    label = '📅 Laporan Harian - ' + d.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
-  } else if (period === 'bulan') {
-    const d = new Date(); d.setDate(1); d.setHours(0,0,0,0); start = d.getTime();
-    label = '📅 Laporan Bulanan - ' + d.toLocaleDateString('id-ID', {month:'long', year:'numeric'});
-  } else if (period === 'custom') {
-    const from = document.getElementById('dateFrom').value;
-    const to = document.getElementById('dateTo').value;
-    if(from) {
-      start = new Date(from).getTime();
-      end = to ? new Date(to).getTime() + 86399999 : now;
-      label = `📅 Laporan Custom (${from} s/d ${to || 'sekarang'})`;
-    }
-  }
-
+  const period = window.currentReportPeriod; const now = Date.now(); let start = 0, end = now, label = 'Laporan Semua Periode';
+  if (period === 'hari') { const d = new Date(); d.setHours(0,0,0,0); start = d.getTime(); label = '📅 Laporan Harian - ' + d.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'}); }
+  else if (period === 'bulan') { const d = new Date(); d.setDate(1); d.setHours(0,0,0,0); start = d.getTime(); label = '📅 Laporan Bulanan - ' + d.toLocaleDateString('id-ID', {month:'long', year:'numeric'}); }
+  else if (period === 'custom') { const from = document.getElementById('dateFrom').value; const to = document.getElementById('dateTo').value; if(from) { start = new Date(from).getTime(); end = to ? new Date(to).getTime() + 86399999 : now; label = `📅 Laporan Custom (${from} s/d ${to || 'sekarang'})`; } }
   const filtered = window.appState.tx.filter(tx => { const t = getTs(tx.timestamp); return t >= start && t <= end; });
-  let stats = { jual:0, beli:0, keluar:0, modal:0, bayarBon:0, countJual:0, countBeli:0 };
-  let products = {};
-
-  filtered.forEach(tx => {
-    const amt = tx.total || 0;
-    if(tx.type === 'jual') { stats.jual += amt; stats.countJual++; }
-    else if(tx.type === 'beli') { stats.beli += amt; stats.countBeli++; }
-    else if(tx.type === 'keluar') stats.keluar += amt;
-    else if(tx.type === 'modal') stats.modal += amt;
-    else if(tx.type === 'pembayaran_bon') stats.bayarBon += amt;
-
-    if(tx.product) {
-      if(!products[tx.product]) products[tx.product] = { qty:0, total:0, jual:0, beli:0, name: PRODUCTS[tx.product]?.name || tx.product };
-      products[tx.product].qty += tx.qty || 0;
-      products[tx.product].total += amt;
-      if(tx.type === 'jual') products[tx.product].jual += tx.qty || 0;
-      if(tx.type === 'beli') products[tx.product].beli += tx.qty || 0;
-    }
+  let stats = { jual:0, beli:0, keluar:0, modal:0, bayarBon:0, countJual:0, countBeli:0 }; let products = {};
+  filtered.forEach(tx => { const amt = tx.total || 0; if(tx.type === 'jual') { stats.jual += amt; stats.countJual++; } else if(tx.type === 'beli') { stats.beli += amt; stats.countBeli++; } else if(tx.type === 'keluar') stats.keluar += amt; else if(tx.type === 'modal') stats.modal += amt; else if(tx.type === 'pembayaran_bon') stats.bayarBon += amt;
+    if(tx.product) { if(!products[tx.product]) products[tx.product] = { qty:0, total:0, jual:0, beli:0, name: PRODUCTS[tx.product]?.name || tx.product }; products[tx.product].qty += tx.qty || 0; products[tx.product].total += amt; if(tx.type === 'jual') products[tx.product].jual += tx.qty || 0; if(tx.type === 'beli') products[tx.product].beli += tx.qty || 0; }
   });
-
   const net = stats.jual + stats.bayarBon + stats.modal - stats.beli - stats.keluar;
   let html = `<div style="text-align:center; margin-bottom:15px;"><h3 style="margin:0; color:var(--dark);">${label}</h3><p style="font-size:12px; color:var(--gray); margin-top:5px;">Dicetak pada: ${new Date().toLocaleString('id-ID')}</p></div>
-    <div class="report-summary">
-      <div class="report-row"><span>💰 Total Penjualan (${stats.countJual} trx)</span><span>${fmtR(stats.jual)}</span></div>
-      <div class="report-row"><span>💳 Penerimaan Bon</span><span>${fmtR(stats.bayarBon)}</span></div>
-      <div class="report-row"><span>💵 Total Modal</span><span>${fmtR(stats.modal)}</span></div>
-      <div class="report-row"><span>🛒 Total Pembelian (${stats.countBeli} trx)</span><span>-${fmtR(stats.beli)}</span></div>
-      <div class="report-row"><span>📤 Total Pengeluaran</span><span>-${fmtR(stats.keluar)}</span></div>
-      <div class="report-row total"><span>LABA / RUGI BERSIH</span><span style="color:${net>=0?'#06D6A0':'#EF476F'}">${fmtR(net)}</span></div>
-    </div>`;
-
-  if(Object.keys(products).length > 0) {
-    html += `<div class="card"><div class="card-title">📦 Breakdown per Produk</div><table class="stock-table"><thead><tr><th>Produk</th><th>Masuk (Beli)</th><th>Keluar (Jual)</th><th>Stok Bersih</th><th>Nilai Transaksi</th></tr></thead><tbody>`;
-    for(const [pid, p] of Object.entries(products)) {
-      html += `<tr><td>${PRODUCTS[pid]?.icon||''} ${p.name}</td><td>${p.beli}</td><td>${p.jual}</td><td>${p.qty}</td><td>${fmtR(p.total)}</td></tr>`;
-    }
-    html += `</tbody></table></div>`;
-  }
+    <div class="report-summary"><div class="report-row"><span>💰 Total Penjualan (${stats.countJual} trx)</span><span>${fmtR(stats.jual)}</span></div><div class="report-row"><span>💳 Penerimaan Bon</span><span>${fmtR(stats.bayarBon)}</span></div><div class="report-row"><span>💵 Total Modal</span><span>${fmtR(stats.modal)}</span></div><div class="report-row"><span>🛒 Total Pembelian (${stats.countBeli} trx)</span><span>-${fmtR(stats.beli)}</span></div><div class="report-row"><span>📤 Total Pengeluaran</span><span>-${fmtR(stats.keluar)}</span></div><div class="report-row total"><span>LABA / RUGI BERSIH</span><span style="color:${net>=0?'#06D6A0':'#EF476F'}">${fmtR(net)}</span></div></div>`;
+  if(Object.keys(products).length > 0) { html += `<div class="card"><div class="card-title">📦 Breakdown per Produk</div><table class="stock-table"><thead><tr><th>Produk</th><th>Masuk (Beli)</th><th>Keluar (Jual)</th><th>Stok Bersih</th><th>Nilai Transaksi</th></tr></thead><tbody>`; for(const [pid, p] of Object.entries(products)) { html += `<tr><td>${PRODUCTS[pid]?.icon||''} ${p.name}</td><td>${p.beli}</td><td>${p.jual}</td><td>${p.qty}</td><td>${fmtR(p.total)}</td></tr>`; } html += `</tbody></table></div>`; }
   html += `<div style="text-align:center; margin-top:15px;"><button class="btn btn-primary" onclick="printReport()" style="width:auto; padding: 10px 30px;">🖨️ Cetak Laporan</button></div>`;
   document.getElementById('reportContent').innerHTML = html;
 };
 
-window.printReport = () => {
-  const content = document.getElementById('reportContent').innerHTML;
-  const title = document.querySelector('#pageLaporan h3')?.textContent || 'Laporan Keuangan Super Magic';
-  const printWindow = window.open('', '_blank');
-  printWindow.document.write(`<html><head><title>${title}</title><style>body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; } h3 { text-align: center; margin-bottom: 5px; } .report-summary { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #ddd; } .report-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed #ccc; } .report-row.total { font-weight: bold; font-size: 18px; border-top: 2px solid #333; margin-top: 10px; padding-top: 10px; } table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; } th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; } th { background: #f0f0f0; font-weight: 600; } button { display: none !important; } @media print { body { padding: 0; } }</style></head><body>${content}</body></html>`);
-  printWindow.document.close(); setTimeout(() => printWindow.print(), 200);
-};
+window.printReport = () => { const content = document.getElementById('reportContent').innerHTML; const title = document.querySelector('#pageLaporan h3')?.textContent || 'Laporan Keuangan Super Magic'; const printWindow = window.open('', '_blank'); printWindow.document.write(`<html><head><title>${title}</title><style>body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; color: #333; } h3 { text-align: center; margin-bottom: 5px; } .report-summary { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border: 1px solid #ddd; } .report-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed #ccc; } .report-row.total { font-weight: bold; font-size: 18px; border-top: 2px solid #333; margin-top: 10px; padding-top: 10px; } table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; } th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; } th { background: #f0f0f0; font-weight: 600; } button { display: none !important; } @media print { body { padding: 0; } }</style></head><body>${content}</body></html>`); printWindow.document.close(); setTimeout(() => printWindow.print(), 200); };
 
-setInterval(() => {
-  const n = new Date();
-  document.getElementById('headerTime').textContent = n.toLocaleTimeString('id-ID');
-  document.getElementById('headerDate').textContent = n.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
-}, 1000);
-
+setInterval(() => { const n = new Date(); document.getElementById('headerTime').textContent = n.toLocaleTimeString('id-ID'); document.getElementById('headerDate').textContent = n.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'}); }, 1000);
 window.addEventListener('online', () => document.getElementById('offlineBanner').classList.remove('show'));
 window.addEventListener('offline', () => document.getElementById('offlineBanner').classList.add('show'));
 </script>
