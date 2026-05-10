@@ -51,7 +51,7 @@
 <div class="offline-banner" id="offlineBanner">⚠️ Mode Offline - Data tersimpan lokal</div>
 <div class="toast" id="toast"></div>
 
-<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Jefmanado</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
+<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Super Magic</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
 
 <div id="appContainer" style="display:none;">
     <header class="app-header"><div class="header-top"><div class="header-left"><div class="logo-container" onclick="document.getElementById('logoInput').click()"><img id="headerLogo" class="header-logo" style="display:none;"><span id="logoPlaceholder" class="logo-placeholder">🥥</span><span class="logo-edit-icon">📷</span></div><input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(this)"><div><div class="app-title">🥥 Super <span>Magic</span></div><div class="header-date" id="headerDate"></div></div></div><div style="display:flex;align-items:center;gap:10px;"><div class="header-time" id="headerTime"></div><button class="logout-btn" onclick="handleLogout()">🚪 Keluar</button></div></div><div class="balance-card"><div class="balance-label">💰 Saldo Saat Ini</div><div class="balance-amount" id="currentBalance">Rp 0</div><div class="balance-row"><div class="balance-item"><span>📈 Pemasukan Hari Ini</span><strong id="todayIncome">Rp 0</strong></div><div class="balance-item"><span>📉 Pengeluaran Hari Ini</span><strong id="todayExpense">Rp 0</strong></div></div></div></header>
@@ -84,11 +84,11 @@
         </div>
     </div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Jefmanado</a>. All rights reserved.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Super Magic</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
-    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value=""><div class="form-group"><label class="form-label">No. Transaksi (Opsional)</label><input type="text" class="form-input" id="txNoTransaksi" placeholder="Kosongkan untuk auto-generate"></div><div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total Tagihan: <strong id="txTotalDisplay">Rp 0</strong></label></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah Dibayar</label><input type="number" class="form-input" id="txPaidAmount" placeholder="0" oninput="calculateRemaining()"></div><div class="form-group"><label class="form-label">Sisa (Bon/Hutang)</label><input type="number" class="form-input" id="txRemainingAmount" placeholder="0" readonly style="background:#f8f9fa; cursor:not-allowed;"></div></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
+    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value=""><div class="form-group"><label class="form-label">No. Transaksi (Opsional)</label><input type="text" class="form-input" id="txNoTransaksi" placeholder="Kosongkan untuk auto-generate"></div><div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total Tagihan: <strong id="txTotalDisplay">Rp 0</strong></label></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah Dibayar</label><input type="number" class="form-input" id="txPaidAmount" placeholder="0"></div><div class="form-group"><label class="form-label">Sisa (Bon/Hutang)</label><input type="number" class="form-input" id="txRemainingAmount" placeholder="0" readonly style="background:#f8f9fa; cursor:not-allowed;"></div></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
     
     <div class="modal-overlay" id="modalReceipt"><div class="modal-content"><div class="modal-header"><div class="modal-title">🧾 Struk / Bukti</div><button class="modal-close" onclick="closeModal('modalReceipt')">✕</button></div><div id="receiptContent"></div><div class="btn-group" style="margin-top:15px;"><button class="btn btn-primary" onclick="printReceipt()">🖨️ Cetak</button><button class="btn btn-outline" onclick="closeModal('modalReceipt')">Tutup</button></div></div></div>
     
@@ -164,22 +164,44 @@ function updateFormVisibility() { const show = (window.currentTxType === 'jual' 
 window.setPayment = (m) => { window.currentPayment = m; document.getElementById('payTunai').classList.toggle('active', m==='tunai'); document.getElementById('payTransfer').classList.toggle('active', m==='transfer'); document.getElementById('payBon').classList.toggle('active', m==='bon'); };
 
 function resetTxForm() {
-  ['txProduct','txQty','txPrice','txDesc','txAmount','txPerson','txNote','txNoTransaksi'].forEach(id => document.getElementById(id).value = '');
+  ['txProduct','txQty','txPrice','txDesc','txAmount','txPerson','txNote','txNoTransaksi','txPaidAmount'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  const txRemainingEl = document.getElementById('txRemainingAmount');
+  if(txRemainingEl) txRemainingEl.value = '0';
+  const txTotalEl = document.getElementById('txTotalDisplay');
+  if(txTotalEl) txTotalEl.textContent = 'Rp 0';
   document.getElementById('txProduct').value = 'kelapa_biji';
-  document.getElementById('txPaidAmount').value = '';
-  document.getElementById('txRemainingAmount').value = '0';
-  document.getElementById('txTotalDisplay').textContent = 'Rp 0';
 }
 
 window.calculateRemaining = () => {
-  const total = (parseFloat(document.getElementById('txQty').value) || 0) * (parseFloat(document.getElementById('txPrice').value) || 0);
-  const paid = parseFloat(document.getElementById('txPaidAmount').value) || 0;
-  document.getElementById('txTotalDisplay').textContent = fmtR(total);
-  document.getElementById('txRemainingAmount').value = Math.max(0, total - paid);
+  const qtyEl = document.getElementById('txQty');
+  const priceEl = document.getElementById('txPrice');
+  const paidEl = document.getElementById('txPaidAmount');
+  const totalEl = document.getElementById('txTotalDisplay');
+  const remainingEl = document.getElementById('txRemainingAmount');
+  
+  if(!qtyEl || !priceEl || !totalEl || !remainingEl) return;
+  
+  const qty = parseFloat(qtyEl.value) || 0;
+  const price = parseFloat(priceEl.value) || 0;
+  const paid = paidEl ? (parseFloat(paidEl.value) || 0) : 0;
+  const total = qty * price;
+  
+  totalEl.textContent = fmtR(total);
+  remainingEl.value = Math.max(0, total - paid);
 };
 
-document.addEventListener('input', (e) => {
-  if (e.target.id === 'txQty' || e.target.id === 'txPrice' || e.target.id === 'txPaidAmount') calculateRemaining();
+// Setup event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const qtyInput = document.getElementById('txQty');
+  const priceInput = document.getElementById('txPrice');
+  const paidInput = document.getElementById('txPaidAmount');
+  
+  if(qtyInput) qtyInput.addEventListener('input', calculateRemaining);
+  if(priceInput) priceInput.addEventListener('input', calculateRemaining);
+  if(paidInput) paidInput.addEventListener('input', calculateRemaining);
 });
 
 async function updateStock(product, qtyChange) {
@@ -193,47 +215,101 @@ async function updateStock(product, qtyChange) {
 }
 
 window.saveTransaction = async () => {
-  const eId = document.getElementById('editTxId').value;
-  const customNo = document.getElementById('txNoTransaksi').value.trim();
-  const paid = parseFloat(document.getElementById('txPaidAmount').value) || 0;
-  let tx = { id: eId || crypto.randomUUID(), type: window.currentTxType, timestamp: serverTimestamp(), paymentMethod: window.currentPayment, person: document.getElementById('txPerson').value.trim(), note: document.getElementById('txNote').value.trim(), settled: false, customNo: customNo || null, payments: [] };
-  
-  if (window.currentTxType === 'jual' || window.currentTxType === 'beli') {
-    const q = parseFloat(document.getElementById('txQty').value); const p = parseFloat(document.getElementById('txPrice').value);
-    if(!q || !p || q <= 0 || p <= 0) { showToast('⚠️ Jumlah & harga wajib >0', 'error'); return; }
-    tx.product = document.getElementById('txProduct').value; tx.qty = q; tx.price = p; tx.total = q * p;
-    tx.paidAmount = Math.min(paid, tx.total);
-    tx.remainingAmount = tx.total - tx.paidAmount;
-    tx.payments = [{ amount: tx.paidAmount, method: window.currentPayment, date: serverTimestamp() }];
-    if(tx.remainingAmount <= 0) tx.settled = true;
-  } else {
-    const a = parseFloat(document.getElementById('txAmount').value); if(!a || a <= 0) { showToast('⚠️ Jumlah wajib >0', 'error'); return; }
-    tx.description = document.getElementById('txDesc').value.trim(); tx.total = a; tx.paidAmount = a; tx.remainingAmount = 0; tx.settled = true; tx.payments = [{ amount: a, method: window.currentPayment, date: serverTimestamp() }];
+  try {
+    const eId = document.getElementById('editTxId').value;
+    const customNo = document.getElementById('txNoTransaksi').value.trim();
+    const paidEl = document.getElementById('txPaidAmount');
+    const paid = paidEl ? (parseFloat(paidEl.value) || 0) : 0;
+    
+    let tx = { 
+      id: eId || crypto.randomUUID(), 
+      type: window.currentTxType, 
+      timestamp: serverTimestamp(), 
+      paymentMethod: window.currentPayment, 
+      person: document.getElementById('txPerson').value.trim(), 
+      note: document.getElementById('txNote').value.trim(), 
+      settled: false, 
+      customNo: customNo || null, 
+      payments: [] 
+    };
+    
+    if (window.currentTxType === 'jual' || window.currentTxType === 'beli') {
+      const qty = parseFloat(document.getElementById('txQty').value);
+      const price = parseFloat(document.getElementById('txPrice').value);
+      
+      if(!qty || !price || qty <= 0 || price <= 0) { 
+        showToast('⚠️ Jumlah & harga wajib >0', 'error'); 
+        return; 
+      }
+      
+      tx.product = document.getElementById('txProduct').value; 
+      tx.qty = qty; 
+      tx.price = price; 
+      tx.total = qty * price;
+      tx.paidAmount = Math.min(paid, tx.total);
+      tx.remainingAmount = tx.total - tx.paidAmount;
+      tx.payments = [{ amount: tx.paidAmount, method: window.currentPayment, date: serverTimestamp() }];
+      
+      if(tx.remainingAmount <= 0.01) {
+        tx.settled = true;
+        tx.remainingAmount = 0;
+      }
+    } else {
+      const amount = parseFloat(document.getElementById('txAmount').value);
+      if(!amount || amount <= 0) { 
+        showToast('⚠️ Jumlah wajib >0', 'error'); 
+        return; 
+      }
+      tx.description = document.getElementById('txDesc').value.trim(); 
+      tx.total = amount; 
+      tx.paidAmount = amount; 
+      tx.remainingAmount = 0; 
+      tx.settled = true; 
+      tx.payments = [{ amount: amount, method: window.currentPayment, date: serverTimestamp() }];
+    }
+    
+    await setDoc(doc(db, "transactions", tx.id), tx);
+    
+    if(tx.type === 'jual' || tx.type === 'beli') {
+      await updateStock(tx.product, window.currentTxType === 'jual' ? -tx.qty : tx.qty);
+    }
+    
+    const msg = tx.settled ? '✅ Transaksi disimpan & LUNAS!' : `✅ Disimpan! Dibayar ${fmtR(tx.paidAmount)}. Sisa: ${fmtR(tx.remainingAmount)}`;
+    showToast(msg, 'success');
+    closeModal('modalTransaction'); 
+    showReceipt(tx);
+  } catch (error) {
+    console.error("Error saving transaction:", error);
+    showToast('❌ Error: ' + error.message, 'error');
   }
-  
-  await setDoc(doc(db, "transactions", tx.id), tx);
-  if(tx.type === 'jual' || tx.type === 'beli') await updateStock(tx.product, window.currentTxType === 'jual' ? -tx.qty : tx.qty);
-  showToast(tx.settled ? '✅ Transaksi disimpan & LUNAS!' : `✅ Disimpan! Dibayar ${fmtR(tx.paidAmount)}. Sisa: ${fmtR(tx.remainingAmount)}`, 'success');
-  closeModal('modalTransaction'); showReceipt(tx);
 };
 
 window.showReceipt = (tx) => {
   const p = tx.product ? PRODUCTS[tx.product] : null;
   const displayNo = tx.customNo || tx.id.substring(0,8);
-  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Jefmanado</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
+  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Super Magic</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
   if(p) html += `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div><div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div><div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>`;
   else html += `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`;
   html += `<div class="receipt-row"><span>Total</span><span>${fmtR(tx.total)}</span></div><div class="receipt-row"><span>Dibayar</span><span>${fmtR(tx.paidAmount||0)}</span></div>${tx.remainingAmount>0?`<div class="receipt-row"><span>Sisa</span><span>${fmtR(tx.remainingAmount)}</span></div>`:''}<div class="receipt-divider"></div><div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
-  document.getElementById('receiptContent').innerHTML = html; openModal('modalReceipt');
+  document.getElementById('receiptContent').innerHTML = html; 
+  openModal('modalReceipt');
 };
 
-window.printReceipt = () => { const content = document.getElementById('printableReceipt').innerHTML; const w = window.open('', '_blank'); w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${content}</body></html>`); w.document.close(); w.print(); };
+window.printReceipt = () => { 
+  const content = document.getElementById('printableReceipt').innerHTML; 
+  const w = window.open('', '_blank'); 
+  w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${content}</body></html>`); 
+  w.document.close(); 
+  w.print(); 
+};
 
-// 🔥 FUNGSI LUNASI BARU
 window.openLunasi = (tx) => {
   document.getElementById('lunasiTxId').value = tx.id;
-  document.getElementById('lunasiAmount').value = tx.remainingAmount || 0;
-  document.getElementById('lunasiAmount').max = tx.remainingAmount;
+  const amountEl = document.getElementById('lunasiAmount');
+  if(amountEl) {
+    amountEl.value = tx.remainingAmount || 0;
+    amountEl.max = tx.remainingAmount;
+  }
   document.getElementById('lunasiInfo').innerHTML = `
     <div style="background:#f8f9fa; padding:12px; border-radius:8px; margin-bottom:15px; font-size:13px;">
       <div style="font-weight:700; margin-bottom:5px;">${tx.person || 'Tanpa Nama'} • ${tx.type.toUpperCase()}</div>
@@ -245,46 +321,73 @@ window.openLunasi = (tx) => {
 
 window.processLunasi = async () => {
   const id = document.getElementById('lunasiTxId').value;
-  const payAmount = parseFloat(document.getElementById('lunasiAmount').value) || 0;
+  const amountEl = document.getElementById('lunasiAmount');
+  const payAmount = amountEl ? (parseFloat(amountEl.value) || 0) : 0;
   const method = document.getElementById('lunasiMethod').value;
+  
   if(payAmount <= 0) return showToast('⚠️ Masukkan jumlah valid', 'error');
 
-  const txRef = doc(db, "transactions", id);
-  const txSnap = await getDoc(txRef);
-  if(!txSnap.exists()) return;
-  const tx = txSnap.data();
+  try {
+    const txRef = doc(db, "transactions", id);
+    const txSnap = await getDoc(txRef);
+    if(!txSnap.exists()) return;
+    const tx = txSnap.data();
 
-  const newPaid = (tx.paidAmount || 0) + payAmount;
-  const newRemaining = (tx.total || 0) - newPaid;
-  const isSettled = newRemaining <= 0;
-  const newPayment = { amount: payAmount, method: method, date: serverTimestamp() };
-  const updatedPayments = [...(tx.payments || []), newPayment];
+    const newPaid = (tx.paidAmount || 0) + payAmount;
+    const newRemaining = (tx.total || 0) - newPaid;
+    const isSettled = newRemaining <= 0.01;
+    const newPayment = { amount: payAmount, method: method, date: serverTimestamp() };
+    const updatedPayments = [...(tx.payments || []), newPayment];
 
-  await updateDoc(txRef, {
-    paidAmount: newPaid,
-    remainingAmount: newRemaining < 0 ? 0 : newRemaining,
-    settled: isSettled,
-    payments: updatedPayments
-  });
+    await updateDoc(txRef, {
+      paidAmount: newPaid,
+      remainingAmount: newRemaining < 0 ? 0 : newRemaining,
+      settled: isSettled,
+      payments: updatedPayments
+    });
 
-  showToast(isSettled ? '✅ Transaksi LUNAS! Saldo & Hutang otomatis terupdate.' : `✅ Dibayar ${fmtR(payAmount)}. Sisa: ${fmtR(Math.max(0, newRemaining))}`, 'success');
-  closeModal('modalLunasi');
+    const msg = isSettled ? '✅ Transaksi LUNAS! Saldo & Hutang otomatis terupdate.' : `✅ Dibayar ${fmtR(payAmount)}. Sisa: ${fmtR(Math.max(0, newRemaining))}`;
+    showToast(msg, 'success');
+    closeModal('modalLunasi');
+  } catch (error) {
+    console.error("Error processing payment:", error);
+    showToast('❌ Error: ' + error.message, 'error');
+  }
 };
 
 window.editTransaction = (tx) => {
-  document.getElementById('editOriginalId').value = tx.id; window.currentTxType = tx.type;
+  document.getElementById('editOriginalId').value = tx.id; 
+  window.currentTxType = tx.type;
   let h = '';
   if(tx.type==='jual'||tx.type==='beli') h = `<div class="form-group"><label>Produk</label><select class="form-select" id="editProduct">${Object.entries(PRODUCTS).map(([k,v])=>`<option value="${k}" ${k===tx.product?'selected':''}>${v.icon} ${v.name} (${v.unit})</option>`).join('')}</select></div><div class="input-row"><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editQty" value="${tx.qty}" step="0.01"></div><div class="form-group"><label>Harga</label><input type="number" class="form-input" id="editPrice" value="${tx.price}"></div></div>`;
   else h = `<div class="form-group"><label>Ket</label><input type="text" class="form-input" id="editDesc" value="${tx.description||''}"></div><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editAmount" value="${tx.total}"></div>`;
   h += `<div class="form-group"><label>Nama</label><input type="text" class="form-input" id="editPerson" value="${tx.person||''}"></div><div class="form-group"><label>Bayar</label><select class="form-select" id="editPayment"><option value="tunai" ${tx.paymentMethod==='tunai'?'selected':''}>Tunai</option><option value="transfer" ${tx.paymentMethod==='transfer'?'selected':''}>Transfer</option><option value="bon" ${tx.paymentMethod==='bon'?'selected':''}>Bon</option></select></div><div class="form-group"><label>Catatan</label><input type="text" class="form-input" id="editNote" value="${tx.note||''}"></div>`;
-  document.getElementById('editForm').innerHTML = h; openModal('modalEdit');
+  document.getElementById('editForm').innerHTML = h; 
+  openModal('modalEdit');
 };
 
 window.saveEdit = async () => {
-  const id = document.getElementById('editOriginalId').value; let tx = window.appState.tx.find(t => t.id === id); if(!tx) return;
-  tx.type = window.currentTxType; tx.paymentMethod = document.getElementById('editPayment').value; tx.person = document.getElementById('editPerson').value.trim(); tx.note = document.getElementById('editNote').value.trim();
-  if(tx.type === 'jual' || tx.type === 'beli') { const q = parseFloat(document.getElementById('editQty').value); const p = parseFloat(document.getElementById('editPrice').value); tx.product = document.getElementById('editProduct').value; tx.qty = q; tx.price = p; tx.total = q*p; } else { tx.description = document.getElementById('editDesc').value.trim(); tx.total = parseFloat(document.getElementById('editAmount').value); }
-  await setDoc(doc(db, "transactions", id), tx); showToast('✅ Update berhasil!', 'success'); closeModal('modalEdit');
+  const id = document.getElementById('editOriginalId').value; 
+  let tx = window.appState.tx.find(t => t.id === id); 
+  if(!tx) return;
+  tx.type = window.currentTxType; 
+  tx.paymentMethod = document.getElementById('editPayment').value; 
+  tx.person = document.getElementById('editPerson').value.trim(); 
+  tx.note = document.getElementById('editNote').value.trim();
+  if(tx.type === 'jual' || tx.type === 'beli') { 
+    const q = parseFloat(document.getElementById('editQty').value); 
+    const p = parseFloat(document.getElementById('editPrice').value); 
+    tx.product = document.getElementById('editProduct').value; 
+    tx.qty = q; 
+    tx.price = p; 
+    tx.total = q*p; 
+  } else { 
+    tx.description = document.getElementById('editDesc').value.trim(); 
+    tx.total = parseFloat(document.getElementById('editAmount').value); 
+  }
+  await setDoc(doc(db, "transactions", id), tx); 
+  showToast('✅ Update berhasil!', 'success'); 
+  closeModal('modalEdit');
 };
 
 window.deleteTransaction = async (tx) => { if(!confirm('Hapus transaksi ini?')) return; await deleteDoc(doc(db, "transactions", tx.id)); showToast('🗑️ Dihapus', 'success'); };
