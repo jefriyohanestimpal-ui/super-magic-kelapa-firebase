@@ -193,7 +193,6 @@ window.calculateRemaining = () => {
   remainingEl.value = Math.max(0, total - paid);
 };
 
-// Setup event listeners
 document.addEventListener('DOMContentLoaded', () => {
   const qtyInput = document.getElementById('txQty');
   const priceInput = document.getElementById('txPrice');
@@ -248,7 +247,8 @@ window.saveTransaction = async () => {
       tx.total = qty * price;
       tx.paidAmount = Math.min(paid, tx.total);
       tx.remainingAmount = tx.total - tx.paidAmount;
-      tx.payments = [{ amount: tx.paidAmount, method: window.currentPayment, date: serverTimestamp() }];
+      // 🔥 PERBAIKAN: Gunakan Date.now() bukan serverTimestamp() di dalam array
+      tx.payments = [{ amount: tx.paidAmount, method: window.currentPayment, date: Date.now() }];
       
       if(tx.remainingAmount <= 0.01) {
         tx.settled = true;
@@ -265,7 +265,8 @@ window.saveTransaction = async () => {
       tx.paidAmount = amount; 
       tx.remainingAmount = 0; 
       tx.settled = true; 
-      tx.payments = [{ amount: amount, method: window.currentPayment, date: serverTimestamp() }];
+      // 🔥 PERBAIKAN: Gunakan Date.now() bukan serverTimestamp() di dalam array
+      tx.payments = [{ amount: amount, method: window.currentPayment, date: Date.now() }];
     }
     
     await setDoc(doc(db, "transactions", tx.id), tx);
@@ -336,7 +337,8 @@ window.processLunasi = async () => {
     const newPaid = (tx.paidAmount || 0) + payAmount;
     const newRemaining = (tx.total || 0) - newPaid;
     const isSettled = newRemaining <= 0.01;
-    const newPayment = { amount: payAmount, method: method, date: serverTimestamp() };
+    // 🔥 PERBAIKAN: Gunakan Date.now() bukan serverTimestamp() di dalam array
+    const newPayment = { amount: payAmount, method: method, date: Date.now() };
     const updatedPayments = [...(tx.payments || []), newPayment];
 
     await updateDoc(txRef, {
