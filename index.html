@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🥥 Jefmanado - Kelapa Trading</title>
+    <title>🥥 Super Magic - Kelapa Trading</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0077B6">
     <style>
@@ -12,7 +12,7 @@
         body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0077B6 0%, #00B4D8 30%, #90E0EF 60%, #CAF0F8 80%, #FFFFFF 100%); min-height: 100vh; color: var(--dark); overflow-x: hidden; padding-bottom: 90px; }
         #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-card { background: white; border-radius: 20px; padding: 30px 25px; width: 100%; max-width: 360px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); text-align: center; }
-        .login-logo { font-size: 48px; margin-bottom: 10px; } .login-title { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; } .login-sub { font-size: 13px; color: var(--gray); margin-bottom: 25px; } .login-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 16px; font-weight: 600; } .login-footer { margin-top: 20px; font-size: 11px; color: var(--gray); }
+        .login-logo { font-size: 48px; margin-bottom: 10px; } .login-title { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; } .login-sub { font-size: 13px; color: var(--gray); margin-bottom: 25px; } .login-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 16px; font-weight: 600; white-space: pre-wrap; } .login-footer { margin-top: 20px; font-size: 11px; color: var(--gray); }
         .app-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 15px 15px 20px; color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; } .header-left { display: flex; align-items: center; gap: 10px; }
         .logo-container { position: relative; cursor: pointer; } .header-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 2px 8px rgba(0,0,0,0.2); } .logo-placeholder { font-size: 34px; line-height: 1; } .logo-edit-icon { position: absolute; bottom: -3px; right: -3px; background: var(--warning); color: var(--dark); border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid white; }
@@ -51,10 +51,10 @@
 <div class="offline-banner" id="offlineBanner">⚠️ Mode Offline - Data tersimpan lokal</div>
 <div class="toast" id="toast"></div>
 
-<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Jefmanado</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
+<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Super Magic</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
 
 <div id="appContainer" style="display:none;">
-    <header class="app-header"><div class="header-top"><div class="header-left"><div class="logo-container" onclick="document.getElementById('logoInput').click()"><img id="headerLogo" class="header-logo" style="display:none;"><span id="logoPlaceholder" class="logo-placeholder">🥥</span><span class="logo-edit-icon">📷</span></div><input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(this)"><div><div class="app-title">🥥 Super <span>Jemanado</span></div><div class="header-date" id="headerDate"></div></div></div><div style="display:flex;align-items:center;gap:10px;"><div class="header-time" id="headerTime"></div><button class="logout-btn" onclick="handleLogout()">🚪 Keluar</button></div></div><div class="balance-card"><div class="balance-label">💰 Saldo Saat Ini</div><div class="balance-amount" id="currentBalance">Rp 0</div><div class="balance-row"><div class="balance-item"><span>📈 Pemasukan Hari Ini</span><strong id="todayIncome">Rp 0</strong></div><div class="balance-item"><span>📉 Pengeluaran Hari Ini</span><strong id="todayExpense">Rp 0</strong></div></div></div></header>
+    <header class="app-header"><div class="header-top"><div class="header-left"><div class="logo-container" onclick="document.getElementById('logoInput').click()"><img id="headerLogo" class="header-logo" style="display:none;"><span id="logoPlaceholder" class="logo-placeholder">🥥</span><span class="logo-edit-icon">📷</span></div><input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(this)"><div><div class="app-title">🥥 Super <span>Magic</span></div><div class="header-date" id="headerDate"></div></div></div><div style="display:flex;align-items:center;gap:10px;"><div class="header-time" id="headerTime"></div><button class="logout-btn" onclick="handleLogout()">🚪 Keluar</button></div></div><div class="balance-card"><div class="balance-label">💰 Saldo Saat Ini</div><div class="balance-amount" id="currentBalance">Rp 0</div><div class="balance-row"><div class="balance-item"><span>📈 Pemasukan Hari Ini</span><strong id="todayIncome">Rp 0</strong></div><div class="balance-item"><span>📉 Pengeluaran Hari Ini</span><strong id="todayExpense">Rp 0</strong></div></div></div></header>
 
     <div class="page active" id="pageDashboard"><div class="quick-actions"><button class="quick-action" onclick="openTransaction('jual')"><svg fill="none" stroke="#06D6A0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg><span>Jual</span></button><button class="quick-action" onclick="openTransaction('beli')"><svg fill="none" stroke="#FFD166" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg><span>Beli</span></button><button class="quick-action" onclick="openTransaction('keluar')"><svg fill="none" stroke="#EF476F" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a5 5 0 00-10 0v2M3 21h18M5 21V13l2-4h10l2 4v8"/></svg><span>Pengeluaran</span></button><button class="quick-action" onclick="openTransaction('modal')"><svg fill="none" stroke="#00B4D8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Tambah Modal</span></button></div><div class="card"><div class="card-title">📊 Ringkasan Bisnis</div><div class="stats-grid"><div class="stat-card"><div class="stat-label">Total Penjualan</div><div class="stat-value green" id="statPenjualan">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Pembelian</div><div class="stat-value red" id="statPembelian">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Pengeluaran</div><div class="stat-value red" id="statPengeluaran">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Modal</div><div class="stat-value blue" id="statModal">Rp 0</div></div></div></div><div class="card"><div class="card-title">📋 Transaksi Terakhir</div><div id="recentTransactions"></div></div></div>
     
@@ -66,7 +66,7 @@
     
     <div class="page" id="pageLaporan"><div class="card"><div class="card-title">📈 Laporan Keuangan</div><div class="form-group"><label class="form-label">Filter Periode</label><div class="filter-bar"><button class="filter-btn active" onclick="setReportPeriod('hari', this)">Hari Ini</button><button class="filter-btn" onclick="setReportPeriod('minggu', this)">Minggu Ini</button><button class="filter-btn" onclick="setReportPeriod('bulan', this)">Bulan Ini</button><button class="filter-btn" onclick="setReportPeriod('semua', this)">Semua</button><button class="filter-btn" onclick="setReportPeriod('custom', this)">Custom</button></div></div><div id="customDateRange" style="display:none;"><div class="input-row"><div class="form-group"><label class="form-label">Dari Tanggal</label><input type="date" class="form-input" id="dateFrom"></div><div class="form-group"><label class="form-label">Sampai Tanggal</label><input type="date" class="form-input" id="dateTo"></div></div><button class="btn btn-primary btn-sm" onclick="generateReport()" style="width:auto;margin-bottom:15px;">Terapkan</button></div><div id="reportContent"></div></div></div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="https://tv-parabol.blogspot.com/p/blog-page_6.html">Jefmanado</a>. All rights reserved.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Jefmanado</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
@@ -84,13 +84,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+// 🔑 PASTE FIREBASE CONFIG DI SINI (JANGAN LEWATKAN!)
 const firebaseConfig = {
-  apiKey: "AIzaSyBVTmfJQiRkC0eHAEdktRVtJRfMLQAVwes",
-    authDomain: "wifi-manager-sambalean.firebaseapp.com",
-    projectId: "wifi-manager-sambalean",
-    storageBucket: "wifi-manager-sambalean.firebasestorage.ap",
-    messagingSenderId: "437031687666",
-    appId: "1:437031687666:web:3775aed72b826956df476b"
+  apiKey: "AIzaSyAKT8aRt3ngwLcIhmXd0EgF6dtr5Ny1oD0",
+  authDomain: "super-magic-kelapa.firebaseapp.com",
+  projectId: "super-magic-kelapa",
+  storageBucket: "super-magic-kelapa.firebasestorage.app",
+  messagingSenderId: "191516235325",
+  appId: "1:191516235325:web:8d5d07d472569cdc42bc54"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -112,12 +113,31 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+// 🔍 FUNGSI LOGIN DENGAN ERROR HANDLER ASLI FIREBASE
 window.handleLogin = async () => {
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value;
   const err = document.getElementById('loginError');
-  try { await signInWithEmailAndPassword(auth, u, p); err.textContent = ''; } 
-  catch (e) { err.textContent = 'Email atau password salah'; }
+  err.textContent = 'Memproses...';
+  console.log('Attempting login with:', u);
+  
+  try {
+    await signInWithEmailAndPassword(auth, u, p);
+    err.textContent = '';
+  } catch (e) {
+    console.error('🔥 Firebase Auth Error:', e);
+    let msg = 'Login gagal. Cek console (F12) untuk detail.';
+    
+    if (e.code === 'auth/invalid-login-credentials') msg = '❌ Email atau password salah';
+    else if (e.code === 'auth/operation-not-allowed') msg = '❌ Fitur Email/Password belum diaktifkan di Firebase Console!';
+    else if (e.code === 'auth/invalid-api-key') msg = '❌ Firebase API Key salah di index.html';
+    else if (e.code === 'auth/network-request-failed') msg = '❌ Tidak ada koneksi internet atau diblokir firewall';
+    else if (e.code === 'auth/invalid-email') msg = '❌ Format email tidak valid';
+    else if (e.code === 'auth/user-not-found') msg = '❌ Email belum terdaftar di Firebase Auth';
+    else msg = `❌ Error: ${e.code} - ${e.message}`;
+    
+    err.textContent = msg;
+  }
 };
 
 window.handleLogout = async () => { if(!confirm('Yakin keluar?')) return; await signOut(auth); };
@@ -184,27 +204,14 @@ document.addEventListener('input', (e) => {
   }
 });
 
-// 🔥 FUNGSI UPDATE STOK YANG DIPERBAIKI
 async function updateStock(product, qtyChange) {
   try {
     const stockRef = doc(db, "stock", product);
     const stockSnap = await getDoc(stockRef);
-    
-    let currentQty = 0;
-    if (stockSnap.exists()) {
-      currentQty = stockSnap.data().qty || 0;
-    }
-    
-    const newQty = currentQty + qtyChange;
-    const finalQty = newQty < 0 ? 0 : newQty;
-    
-    await setDoc(stockRef, {
-      product: product,
-      qty: finalQty,
-      lastUpdated: serverTimestamp()
-    }, { merge: true });
-    
-    console.log(`✅ Stok ${product} updated: ${currentQty} → ${finalQty} (change: ${qtyChange})`);
+    let currentQty = stockSnap.exists() ? stockSnap.data().qty || 0 : 0;
+    const finalQty = Math.max(0, currentQty + qtyChange);
+    await setDoc(stockRef, { product, qty: finalQty, lastUpdated: serverTimestamp() }, { merge: true });
+    console.log(`✅ Stok ${product} updated: ${currentQty} → ${finalQty}`);
   } catch (error) {
     console.error('❌ Error update stok:', error);
     showToast('⚠️ Gagal update stok', 'error');
@@ -215,283 +222,110 @@ window.saveTransaction = async () => {
   const eId = document.getElementById('editTxId').value;
   const customNo = document.getElementById('txNoTransaksi').value.trim();
   
-  let tx = { 
-    id: eId || crypto.randomUUID(), 
-    type: window.currentTxType, 
-    timestamp: serverTimestamp(), 
-    payment: window.currentPayment, 
-    person: document.getElementById('txPerson').value.trim(), 
-    note: document.getElementById('txNote').value.trim(), 
-    settled: false, 
-    paidAmount: 0, 
-    remainingAmount: 0,
-    customNo: customNo || null
-  };
+  let tx = { id: eId || crypto.randomUUID(), type: window.currentTxType, timestamp: serverTimestamp(), payment: window.currentPayment, person: document.getElementById('txPerson').value.trim(), note: document.getElementById('txNote').value.trim(), settled: false, paidAmount: 0, remainingAmount: 0, customNo: customNo || null };
   
   if (window.currentTxType === 'jual' || window.currentTxType === 'beli') {
     const q = parseFloat(document.getElementById('txQty').value);
     const p = parseFloat(document.getElementById('txPrice').value);
     if(!q || !p || q <= 0 || p <= 0) { showToast('⚠️ Jumlah & harga wajib >0', 'error'); return; }
-    tx.product = document.getElementById('txProduct').value; 
-    tx.qty = q; 
-    tx.price = p; 
-    tx.total = q * p;
+    tx.product = document.getElementById('txProduct').value; tx.qty = q; tx.price = p; tx.total = q * p;
   } else {
     const a = parseFloat(document.getElementById('txAmount').value);
     if(!a || a <= 0) { showToast('⚠️ Jumlah wajib >0', 'error'); return; }
-    tx.description = document.getElementById('txDesc').value.trim(); 
-    tx.total = a;
+    tx.description = document.getElementById('txDesc').value.trim(); tx.total = a;
   }
   
   if (window.currentPayment === 'bon') tx.remainingAmount = tx.total;
   else tx.paidAmount = tx.total;
   
   await setDoc(doc(db, "transactions", tx.id), tx);
-  
-  // 🔥 UPDATE STOK OTOMATIS
   if(tx.type === 'jual' || tx.type === 'beli') {
-    const stockChange = tx.type === 'jual' ? -tx.qty : tx.qty; // Jual = kurangi, Beli = tambah
+    const stockChange = tx.type === 'jual' ? -tx.qty : tx.qty;
     await updateStock(tx.product, stockChange);
     showToast(`✅ Transaksi disimpan! Stok ${tx.type === 'jual' ? 'berkurang' : 'bertambah'} ${Math.abs(tx.qty)}`, 'success');
   } else {
     showToast('✅ Transaksi disimpan!', 'success');
   }
-  
-  closeModal('modalTransaction'); 
-  showReceipt(tx);
+  closeModal('modalTransaction'); showReceipt(tx);
 };
 
 window.showReceipt = (tx) => {
   const p = tx.product ? PRODUCTS[tx.product] : null;
   const displayNo = tx.customNo || tx.id.substring(0,8);
-  
-  let html = `<div class="receipt" id="printableReceipt">
-    <div class="receipt-header"><h3>🥥 Jefmanado</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div>
-    <div class="receipt-divider"></div>`;
+  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Super Magic</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
   if(p) html += `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div><div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div><div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>`;
   else html += `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`;
-  html += `<div class="receipt-row"><span>Bayar</span><span>${tx.payment.toUpperCase()}</span></div>
-    <div class="receipt-divider"></div><div class="receipt-total">${fmtR(tx.total)}</div>
-    <div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
-  document.getElementById('receiptContent').innerHTML = html;
-  openModal('modalReceipt');
+  html += `<div class="receipt-row"><span>Bayar</span><span>${tx.payment.toUpperCase()}</span></div><div class="receipt-divider"></div><div class="receipt-total">${fmtR(tx.total)}</div><div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
+  document.getElementById('receiptContent').innerHTML = html; openModal('modalReceipt');
 };
 
 window.printReceipt = () => {
-  const content = document.getElementById('printableReceipt').innerHTML;
+  const c = document.getElementById('printableReceipt').innerHTML;
   const w = window.open('', '_blank');
-  w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${content}</body></html>`);
-  w.document.close();
-  w.print();
+  w.document.write(`<html><head><title>Struk</title><style>body{font-family:monospace;max-width:300px;margin:0 auto}</style></head><body>${c}</body></html>`);
+  w.document.close(); w.print();
 };
 
 window.processLunasi = async () => {
   const id = document.getElementById('lunasiTxId').value;
   const amt = parseFloat(document.getElementById('lunasiAmount').value);
-  const tx = window.appState.tx.find(t => t.id === id);
-  if(!tx) return;
-  
-  tx.paidAmount += amt;
-  tx.remainingAmount -= amt;
+  const tx = window.appState.tx.find(t => t.id === id); if(!tx) return;
+  tx.paidAmount += amt; tx.remainingAmount -= amt;
   if(tx.remainingAmount <= 0) { tx.remainingAmount = 0; tx.settled = true; }
-  
   await setDoc(doc(db, "transactions", id), tx);
-  showToast('✅ Bon dilunasi!', 'success');
-  closeModal('modalLunasi');
+  showToast('✅ Bon dilunasi!', 'success'); closeModal('modalLunasi');
 };
 
 window.editTransaction = (tx) => {
-  document.getElementById('editOriginalId').value = tx.id;
-  window.currentTxType = tx.type;
+  document.getElementById('editOriginalId').value = tx.id; window.currentTxType = tx.type;
   let h = '';
-  if(tx.type==='jual'||tx.type==='beli') {
-    h = `<div class="form-group"><label>Produk</label><select class="form-select" id="editProduct">${Object.entries(PRODUCTS).map(([k,v])=>`<option value="${k}" ${k===tx.product?'selected':''}>${v.icon} ${v.name} (${v.unit})</option>`).join('')}</select></div><div class="input-row"><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editQty" value="${tx.qty}" step="0.01"></div><div class="form-group"><label>Harga</label><input type="number" class="form-input" id="editPrice" value="${tx.price}"></div></div>`;
-  } else {
-    h = `<div class="form-group"><label>Ket</label><input type="text" class="form-input" id="editDesc" value="${tx.description||''}"></div><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editAmount" value="${tx.total}"></div>`;
-  }
+  if(tx.type==='jual'||tx.type==='beli') h = `<div class="form-group"><label>Produk</label><select class="form-select" id="editProduct">${Object.entries(PRODUCTS).map(([k,v])=>`<option value="${k}" ${k===tx.product?'selected':''}>${v.icon} ${v.name} (${v.unit})</option>`).join('')}</select></div><div class="input-row"><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editQty" value="${tx.qty}" step="0.01"></div><div class="form-group"><label>Harga</label><input type="number" class="form-input" id="editPrice" value="${tx.price}"></div></div>`;
+  else h = `<div class="form-group"><label>Ket</label><input type="text" class="form-input" id="editDesc" value="${tx.description||''}"></div><div class="form-group"><label>Jumlah</label><input type="number" class="form-input" id="editAmount" value="${tx.total}"></div>`;
   h += `<div class="form-group"><label>Nama</label><input type="text" class="form-input" id="editPerson" value="${tx.person||''}"></div><div class="form-group"><label>Bayar</label><select class="form-select" id="editPayment"><option value="tunai" ${tx.payment==='tunai'?'selected':''}>Tunai</option><option value="transfer" ${tx.payment==='transfer'?'selected':''}>Transfer</option><option value="bon" ${tx.payment==='bon'?'selected':''}>Bon</option></select></div><div class="form-group"><label>Catatan</label><input type="text" class="form-input" id="editNote" value="${tx.note||''}"></div>`;
-  document.getElementById('editForm').innerHTML = h;
-  openModal('modalEdit');
+  document.getElementById('editForm').innerHTML = h; openModal('modalEdit');
 };
 
 window.saveEdit = async () => {
-  const id = document.getElementById('editOriginalId').value;
-  let tx = window.appState.tx.find(t => t.id === id);
-  if(!tx) return;
-  
-  tx.type = window.currentTxType;
-  tx.payment = document.getElementById('editPayment').value;
-  tx.person = document.getElementById('editPerson').value.trim();
-  tx.note = document.getElementById('editNote').value.trim();
-  
-  if(tx.type === 'jual' || tx.type === 'beli') {
-    const q = parseFloat(document.getElementById('editQty').value);
-    const p = parseFloat(document.getElementById('editPrice').value);
-    tx.product = document.getElementById('editProduct').value;
-    tx.qty = q; tx.price = p; tx.total = q*p;
-  } else {
-    tx.description = document.getElementById('editDesc').value.trim();
-    tx.total = parseFloat(document.getElementById('editAmount').value);
-  }
-  
+  const id = document.getElementById('editOriginalId').value; let tx = window.appState.tx.find(t => t.id === id); if(!tx) return;
+  tx.type = window.currentTxType; tx.payment = document.getElementById('editPayment').value; tx.person = document.getElementById('editPerson').value.trim(); tx.note = document.getElementById('editNote').value.trim();
+  if(tx.type === 'jual' || tx.type === 'beli') { const q = parseFloat(document.getElementById('editQty').value), p = parseFloat(document.getElementById('editPrice').value); tx.product = document.getElementById('editProduct').value; tx.qty = q; tx.price = p; tx.total = q*p; } else { tx.description = document.getElementById('editDesc').value.trim(); tx.total = parseFloat(document.getElementById('editAmount').value); }
   if(tx.payment === 'bon' && !tx.settled) tx.remainingAmount = tx.total - (tx.paidAmount||0);
-  
-  await setDoc(doc(db, "transactions", id), tx);
-  showToast('✅ Update berhasil!', 'success');
-  closeModal('modalEdit');
+  await setDoc(doc(db, "transactions", id), tx); showToast('✅ Update berhasil!', 'success'); closeModal('modalEdit');
 };
 
-window.deleteTransaction = async (tx) => {
-  if(!confirm('Hapus transaksi ini?')) return;
-  await deleteDoc(doc(db, "transactions", tx.id));
-  showToast('🗑️ Dihapus', 'success');
-};
-
-window.adjustStock = async () => {
-  const p = document.getElementById('adjustProduct').value;
-  const q = parseFloat(document.getElementById('adjustQty').value);
-  await updateStock(p, q);
-  showToast('✅ Stok disesuaikan', 'success');
-};
-
-window.handleLogoUpload = async (input) => {
-  const f = input.files[0];
-  if(!f) return;
-  const r = new FileReader();
-  r.onload = async e => {
-    await setDoc(doc(db, "settings", "logo"), { value: e.target.result });
-    showToast('✅ Logo updated', 'success');
-  };
-  r.readAsDataURL(f);
-};
-
-window.filterByType = (type, btn) => {
-  window.currentFilter = type;
-  document.querySelectorAll('#pageTransaksi .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderTxHistory();
-};
-
+window.deleteTransaction = async (tx) => { if(!confirm('Hapus transaksi ini?')) return; await deleteDoc(doc(db, "transactions", tx.id)); showToast('🗑️ Dihapus', 'success'); };
+window.adjustStock = async () => { const p = document.getElementById('adjustProduct').value, q = parseFloat(document.getElementById('adjustQty').value); await updateStock(p, q); showToast('✅ Stok disesuaikan', 'success'); };
+window.handleLogoUpload = async (input) => { const f = input.files[0]; if(!f) return; const r = new FileReader(); r.onload = async e => { await setDoc(doc(db, "settings", "logo"), { value: e.target.result }); showToast('✅ Logo updated', 'success'); }; r.readAsDataURL(f); };
+window.filterByType = (type, btn) => { window.currentFilter = type; document.querySelectorAll('#pageTransaksi .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTxHistory(); };
 window.filterTransactions = () => renderTxHistory();
+window.setReportPeriod = (p, btn) => { window.currentReportPeriod = p; document.querySelectorAll('#pageLaporan .filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); document.getElementById('customDateRange').style.display = p === 'custom' ? 'block' : 'none'; if(p !== 'custom') generateReport(); };
 
-window.setReportPeriod = (p, btn) => {
-  window.currentReportPeriod = p;
-  document.querySelectorAll('#pageLaporan .filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('customDateRange').style.display = p === 'custom' ? 'block' : 'none';
-  if(p !== 'custom') generateReport();
-};
-
-const PRODUCTS = {
-  kelapa_biji: { name: 'Kelapa Biji', unit: 'kg', icon: '🥥' },
-  kopra: { name: 'Kopra', unit: 'kg', icon: '🌴' },
-  sabut: { name: 'Sabut', unit: 'karung', icon: '🧶' },
-  tempurung: { name: 'Tempurung', unit: 'kg', icon: '🪨' },
-  bricket: { name: 'Bricket', unit: 'kg', icon: '🧱' }
-};
-
+const PRODUCTS = { kelapa_biji: { name: 'Kelapa Biji', unit: 'kg', icon: '🥥' }, kopra: { name: 'Kopra', unit: 'kg', icon: '🌴' }, sabut: { name: 'Sabut', unit: 'karung', icon: '🧶' }, tempurung: { name: 'Tempurung', unit: 'kg', icon: '🪨' }, bricket: { name: 'Bricket', unit: 'kg', icon: '🧱' } };
 const fmtR = n => 'Rp ' + Number(n||0).toLocaleString('id-ID');
 const fmtD = t => t ? new Date(t.seconds*1000).toLocaleDateString('id-ID') : '-';
 
-function showToast(msg, type='') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show ' + type;
-  setTimeout(() => t.className = 'toast', 3000);
-}
+function showToast(msg, type='') { const t = document.getElementById('toast'); t.textContent = msg; t.className = 'toast show ' + type; setTimeout(() => t.className = 'toast', 3000); }
 
 function initRealtimeSync() {
-  onSnapshot(query(collection(db, "transactions"), orderBy("timestamp", "desc")), (snap) => {
-    window.appState.tx = snap.docs.map(d => ({id: d.id, ...d.data()}));
-    refreshDashboard();
-    renderTxHistory();
-    renderDebts();
-  });
-  
-  onSnapshot(collection(db, "stock"), (snap) => {
-    window.appState.stock = {};
-    snap.forEach(d => {
-      const data = d.data();
-      window.appState.stock[d.id] = data;
-    });
-    renderStock();
-  });
-  
-  onSnapshot(collection(db, "settings"), (snap) => {
-    window.appState.settings = {};
-    snap.forEach(d => window.appState.settings[d.id] = d.data());
-  });
+  onSnapshot(query(collection(db, "transactions"), orderBy("timestamp", "desc")), (snap) => { window.appState.tx = snap.docs.map(d => ({id: d.id, ...d.data()})); refreshDashboard(); renderTxHistory(); renderDebts(); });
+  onSnapshot(collection(db, "stock"), (snap) => { window.appState.stock = {}; snap.forEach(d => window.appState.stock[d.id] = d.data()); renderStock(); });
+  onSnapshot(collection(db, "settings"), (snap) => { window.appState.settings = {}; snap.forEach(d => window.appState.settings[d.id] = d.data()); });
 }
 
 function refreshDashboard() {
   let total = 0;
-  window.appState.tx.forEach(tx => {
-    const amt = tx.paidAmount || tx.total || 0;
-    if(tx.type === 'jual') total += amt;
-    else if(tx.type === 'beli' || tx.type === 'keluar') total -= amt;
-    else if(tx.type === 'modal') total += amt;
-  });
+  window.appState.tx.forEach(tx => { const amt = tx.paidAmount || tx.total || 0; if(tx.type === 'jual') total += amt; else if(tx.type === 'beli' || tx.type === 'keluar') total -= amt; else if(tx.type === 'modal') total += amt; });
   document.getElementById('currentBalance').textContent = fmtR(total);
   document.getElementById('recentTransactions').innerHTML = window.appState.tx.slice(0,5).map(renderTxItem).join('') || '<div class="empty-state">Belum ada transaksi</div>';
 }
 
-function renderTxItem(tx) {
-  const no = tx.customNo || tx.id.substring(0,8);
-  return `<div class="tx-item ${tx.type}">
-    <div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>#${no}</span></div>
-    <div class="tx-amount">${fmtR(tx.total)}</div>
-    <div class="tx-actions">
-      <button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button>
-      <button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button>
-      <button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>
-      ${tx.payment==='bon' && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="processLunasi()">💳</button>` : ''}
-    </div>
-  </div>`;
-}
+function renderTxItem(tx) { const no = tx.customNo || tx.id.substring(0,8); return `<div class="tx-item ${tx.type}"><div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>#${no}</span></div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${tx.payment==='bon' && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="processLunasi()">💳</button>` : ''}</div></div>`; }
+function renderTxHistory() { let f = window.appState.tx; if(window.currentFilter !== 'semua') f = f.filter(tx => tx.type === window.currentFilter); document.getElementById('txHistoryList').innerHTML = f.map(renderTxItem).join('') || '<div class="empty-state">Tidak ada data</div>'; }
+function renderStock() { const tbody = document.getElementById('stockTableBody'); const products = ['kelapa_biji', 'kopra', 'sabut', 'tempurung', 'bricket']; let html = ''; products.forEach(prodId => { const stockData = window.appState.stock[prodId]; const product = PRODUCTS[prodId]; const qty = stockData ? stockData.qty : 0; html += `<tr><td>${product.icon} ${product.name}</td><td><strong>${qty}</strong></td><td>${product.unit}</td></tr>`; }); tbody.innerHTML = html || '<tr><td colspan="3">Belum ada data</td></tr>'; }
+function renderDebts() { const debts = window.appState.tx.filter(tx => tx.payment === 'bon' && tx.remainingAmount > 0); document.getElementById('debtList').innerHTML = debts.map(d => `<div class="debt-card"><div>${d.person||'-'}</div><div>${fmtR(d.remainingAmount)}</div></div>`).join('') || '<div class="empty-state">Tidak ada bon</div>'; }
+function generateReport() { document.getElementById('reportContent').innerHTML = '<div class="card">Laporan - Fitur lengkap bisa ditambahkan</div>'; }
 
-function renderTxHistory() {
-  let f = window.appState.tx;
-  if(window.currentFilter !== 'semua') f = f.filter(tx => tx.type === window.currentFilter);
-  document.getElementById('txHistoryList').innerHTML = f.map(renderTxItem).join('') || '<div class="empty-state">Tidak ada data</div>';
-}
-
-function renderStock() {
-  const tbody = document.getElementById('stockTableBody');
-  const products = ['kelapa_biji', 'kopra', 'sabut', 'tempurung', 'bricket'];
-  
-  let html = '';
-  products.forEach(prodId => {
-    const stockData = window.appState.stock[prodId];
-    const product = PRODUCTS[prodId];
-    const qty = stockData ? stockData.qty : 0;
-    
-    html += `<tr>
-      <td>${product.icon} ${product.name}</td>
-      <td><strong>${qty}</strong></td>
-      <td>${product.unit}</td>
-    </tr>`;
-  });
-  
-  tbody.innerHTML = html || '<tr><td colspan="3">Belum ada data</td></tr>';
-}
-
-function renderDebts() {
-  const debts = window.appState.tx.filter(tx => tx.payment === 'bon' && tx.remainingAmount > 0);
-  document.getElementById('debtList').innerHTML = debts.map(d => 
-    `<div class="debt-card"><div>${d.person||'-'}</div><div>${fmtR(d.remainingAmount)}</div></div>`
-  ).join('') || '<div class="empty-state">Tidak ada bon</div>';
-}
-
-function generateReport() {
-  document.getElementById('reportContent').innerHTML = '<div class="card">Laporan - Fitur lengkap bisa ditambahkan</div>';
-}
-
-setInterval(() => {
-  const n = new Date();
-  document.getElementById('headerTime').textContent = n.toLocaleTimeString('id-ID');
-  document.getElementById('headerDate').textContent = n.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
-}, 1000);
-
+setInterval(() => { const n = new Date(); document.getElementById('headerTime').textContent = n.toLocaleTimeString('id-ID'); document.getElementById('headerDate').textContent = n.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'}); }, 1000);
 window.addEventListener('online', () => document.getElementById('offlineBanner').classList.remove('show'));
 window.addEventListener('offline', () => document.getElementById('offlineBanner').classList.add('show'));
 </script>
