@@ -5,26 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🥥 Super Magic - Kelapa Trading</title>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0077B6">
+    <meta name="theme-color" content="#059669">
     <style>
-        :root { --primary: #0077B6; --primary-dark: #023E8A; --primary-light: #00B4D8; --accent: #0096C7; --success: #06D6A0; --danger: #EF476F; --warning: #FFD166; --dark: #1B2A4A; --gray: #6C757D; --gray-light: #E9ECEF; --shadow: 0 4px 15px rgba(0,119,182,0.15); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* 🎨 TEMA WARNA HIJAU */
+        :root { 
+            --primary: #059669; --primary-dark: #047857; --primary-light: #10B981; --accent: #34D399; 
+            --success: #06D6A0; --danger: #EF476F; --warning: #FFD166; --dark: #1B2A4A; 
+            --gray: #6C757D; --gray-light: #E9ECEF; --shadow: 0 4px 15px rgba(5,150,105,0.15); 
+            --radius: 16px; --radius-sm: 10px; 
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0077B6 0%, #00B4D8 30%, #90E0EF 60%, #CAF0F8 80%, #FFFFFF 100%); min-height: 100vh; color: var(--dark); overflow-x: hidden; padding-bottom: 90px; }
-        #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background: linear-gradient(135deg, #059669 0%, #10B981 30%, #6EE7B7 60%, #A7F3D0 80%, #FFFFFF 100%); 
+            min-height: 100vh; color: var(--dark); overflow-x: hidden; padding-bottom: 90px; 
+        }
+        
+        #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #047857 0%, #059669 50%, #10B981 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-card { background: white; border-radius: 20px; padding: 30px 25px; width: 100%; max-width: 360px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); text-align: center; }
         .login-logo { font-size: 48px; margin-bottom: 10px; } .login-title { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; } .login-sub { font-size: 13px; color: var(--gray); margin-bottom: 25px; } .login-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 16px; font-weight: 600; } .login-footer { margin-top: 20px; font-size: 11px; color: var(--gray); }
-        .app-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 15px 15px 20px; color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; } .header-left { display: flex; align-items: center; gap: 10px; }
-        .logo-container { position: relative; cursor: pointer; } .header-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 2px 8px rgba(0,0,0,0.2); } .logo-placeholder { font-size: 34px; line-height: 1; } .logo-edit-icon { position: absolute; bottom: -3px; right: -3px; background: var(--warning); color: var(--dark); border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid white; }
-        .app-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; } .app-title span { color: var(--warning); } .header-time { font-size: 13px; opacity: 0.9; font-weight: 500; } .header-date { font-size: 11px; opacity: 0.8; margin-top: 2px; }
-        .logout-btn { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); } .logout-btn:active { background: rgba(255,255,255,0.3); transform: scale(0.95); }
-        .balance-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: var(--radius); padding: 15px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.2); } .balance-label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; } .balance-amount { font-size: 26px; font-weight: 800; margin-top: 2px; } .balance-row { display: flex; gap: 15px; margin-top: 8px; } .balance-item { font-size: 11px; opacity: 0.85; } .balance-item strong { font-size: 14px; display: block; margin-top: 2px; }
+        
+        /*  HEADER HIJAU & COMPACT */
+        .app-header { 
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary)); 
+            padding: 8px 15px 12px; 
+            color: white; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+        }
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; } 
+        .header-left { display: flex; align-items: center; gap: 8px; }
+        .logo-container { position: relative; cursor: pointer; } 
+        .header-logo { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 2px 8px rgba(0,0,0,0.2); } 
+        .logo-placeholder { font-size: 24px; line-height: 1; } 
+        .logo-edit-icon { position: absolute; bottom: -2px; right: -2px; background: var(--warning); color: var(--dark); border-radius: 50%; width: 14px; height: 14px; font-size: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid white; }
+        .app-title { font-size: 16px; font-weight: 800; letter-spacing: -0.5px; } 
+        .app-title span { color: var(--warning); } 
+        .header-time { font-size: 11px; opacity: 0.9; font-weight: 500; } 
+        .header-date { font-size: 10px; opacity: 0.8; margin-top: 1px; }
+        .logout-btn { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 4px 10px; border-radius: 15px; font-size: 11px; font-weight: 600; cursor: pointer; transition: var(--transition); } 
+        .logout-btn:active { background: rgba(255,255,255,0.3); transform: scale(0.95); }
+        
+        .balance-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 12px; padding: 10px 12px; margin-top: 8px; border: 1px solid rgba(255,255,255,0.2); } 
+        .balance-label { font-size: 10px; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; } 
+        .balance-amount { font-size: 20px; font-weight: 800; margin-top: 2px; } 
+        .balance-row { display: flex; gap: 12px; margin-top: 6px; } 
+        .balance-item { font-size: 9px; opacity: 0.9; } 
+        .balance-item strong { font-size: 12px; display: block; margin-top: 1px; }
+
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 8px 5px 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 100; border-top: 1px solid var(--gray-light); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; padding: 5px 8px; border-radius: 12px; cursor: pointer; transition: var(--transition); min-width: 55px; border: none; background: none; color: var(--gray); font-size: 10px; font-weight: 600; } .nav-item.active { color: var(--primary); background: rgba(0,119,182,0.1); } .nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; padding: 5px 8px; border-radius: 12px; cursor: pointer; transition: var(--transition); min-width: 55px; border: none; background: none; color: var(--gray); font-size: 10px; font-weight: 600; } .nav-item.active { color: var(--primary); background: rgba(5,150,105,0.1); } .nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
         .page { display: none; padding: 15px; animation: fadeIn 0.3s ease; } .page.active { display: block; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .card { background: white; border-radius: var(--radius); padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.8); } .card-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .form-group { margin-bottom: 14px; } .form-label { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; display: block; } .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition); background: white; color: var(--dark); } .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,119,182,0.1); } .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 4px 15px rgba(0,119,182,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
+        .form-group { margin-bottom: 14px; } .form-label { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; display: block; } .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition); background: white; color: var(--dark); } .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); } .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 4px 15px rgba(5,150,105,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
         .toggle-group { display: flex; background: var(--gray-light); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 15px; } .toggle-btn { flex: 1; padding: 10px; border: none; background: transparent; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); color: var(--gray); } .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; } .tag-jual { background: #D4EDDA; color: #155724; } .tag-beli { background: #FFF3CD; color: #856404; } .tag-keluar { background: #F8D7DA; color: #721C24; } .tag-modal { background: #D1ECF1; color: #0C5460; } .tag-lunas { background: #C3E6CB; color: #155724; } .tag-bon { background: #F8D7DA; color: #721C24; } .tag-partial { background: #FFF3CD; color: #856404; }
         .tx-list { display: flex; flex-direction: column; gap: 10px; } .tx-item { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); transition: var(--transition); } .tx-item.jual { border-left-color: var(--success); } .tx-item.beli { border-left-color: var(--warning); } .tx-item.keluar { border-left-color: var(--danger); } .tx-item.modal { border-left-color: var(--primary-light); } .tx-item.pembayaran_bon { border-left-color: var(--primary-dark); }
@@ -63,7 +101,33 @@
 <div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Super Magic</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
 
 <div id="appContainer" style="display:none;">
-    <header class="app-header"><div class="header-top"><div class="header-left"><div class="logo-container" onclick="document.getElementById('logoInput').click()"><img id="headerLogo" class="header-logo" style="display:none;"><span id="logoPlaceholder" class="logo-placeholder">🥥</span><span class="logo-edit-icon">📷</span></div><input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(this)"><div><div class="app-title">🥥 Super <span>Magic</span></div><div class="header-date" id="headerDate"></div></div></div><div style="display:flex;align-items:center;gap:10px;"><div class="header-time" id="headerTime"></div><button class="logout-btn" onclick="handleLogout()">🚪 Keluar</button></div></div><div class="balance-card"><div class="balance-label">💰 Saldo Saat Ini</div><div class="balance-amount" id="currentBalance">Rp 0</div><div class="balance-row"><div class="balance-item"><span>📈 Pemasukan Hari Ini</span><strong id="todayIncome">Rp 0</strong></div><div class="balance-item"><span>📉 Pengeluaran Hari Ini</span><strong id="todayExpense">Rp 0</strong></div></div></div></header>
+    <header class="app-header">
+        <div class="header-top">
+            <div class="header-left">
+                <div class="logo-container" onclick="document.getElementById('logoInput').click()">
+                    <img id="headerLogo" class="header-logo" style="display:none;">
+                    <span id="logoPlaceholder" class="logo-placeholder">🥥</span>
+                    <span class="logo-edit-icon">📷</span>
+                </div>
+                <div>
+                    <div class="app-title">🥥 Super <span>Magic</span></div>
+                    <div class="header-date" id="headerDate"></div>
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <div class="header-time" id="headerTime"></div>
+                <button class="logout-btn" onclick="handleLogout()">🚪</button>
+            </div>
+        </div>
+        <div class="balance-card">
+            <div class="balance-label">💰 Saldo Saat Ini</div>
+            <div class="balance-amount" id="currentBalance">Rp 0</div>
+            <div class="balance-row">
+                <div class="balance-item"><span>📈 Masuk Hari Ini</span><strong id="todayIncome">Rp 0</strong></div>
+                <div class="balance-item"><span>📉 Keluar Hari Ini</span><strong id="todayExpense">Rp 0</strong></div>
+            </div>
+        </div>
+    </header>
 
     <div class="page active" id="pageDashboard"><div class="quick-actions"><button class="quick-action" onclick="openTransaction('jual')"><svg fill="none" stroke="#06D6A0" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg><span>Jual</span></button><button class="quick-action" onclick="openTransaction('beli')"><svg fill="none" stroke="#FFD166" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg><span>Beli</span></button><button class="quick-action" onclick="openTransaction('keluar')"><svg fill="none" stroke="#EF476F" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a5 5 0 00-10 0v2M3 21h18M5 21V13l2-4h10l2 4v8"/></svg><span>Pengeluaran</span></button><button class="quick-action" onclick="openTransaction('modal')"><svg fill="none" stroke="#00B4D8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Tambah Modal</span></button></div><div class="card"><div class="card-title">📊 Ringkasan Bisnis</div><div class="stats-grid"><div class="stat-card"><div class="stat-label">Total Penjualan</div><div class="stat-value green" id="statPenjualan">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Pembelian</div><div class="stat-value red" id="statPembelian">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Pengeluaran</div><div class="stat-value red" id="statPengeluaran">Rp 0</div></div><div class="stat-card"><div class="stat-label">Total Modal</div><div class="stat-value blue" id="statModal">Rp 0</div></div></div></div><div class="card"><div class="card-title">📋 Transaksi Terakhir</div><div id="recentTransactions"></div></div></div>
     
@@ -93,7 +157,7 @@
         </div>
     </div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">by. Jefmanado</a>. All rights reserved.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">by.Jefmanado</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
@@ -297,7 +361,6 @@ window.showReceipt = (tx) => {
   const displayNo = tx.customNo || tx.id.substring(0,8).toUpperCase();
   const payMethod = (tx.paymentMethod || tx.payment || 'TUNAI').toUpperCase();
   
-  // Header khusus untuk Pelunasan
   let headerTitle = tx.type === 'pembayaran_bon' ? 'BUKTI PELUNASAN' : '🥥 SUPER MAGIC';
   let headerSub = tx.type === 'pembayaran_bon' ? 'Nota Pembayaran Hutang' : 'Komoditi Kelapa';
   let contentHtml = '';
@@ -370,7 +433,6 @@ window.openLunasi = (tx) => {
   openModal('modalLunasi');
 };
 
-// 🔥 FUNGSI LUNASI YANG DIPERBARUI (Membuat Transaksi Terpisah)
 window.processLunasi = async () => {
   const id = document.getElementById('lunasiTxId').value;
   const amountEl = document.getElementById('lunasiAmount');
@@ -380,18 +442,14 @@ window.processLunasi = async () => {
   if(payAmount <= 0) return showToast('⚠️ Masukkan jumlah valid', 'error');
 
   try {
-    // 1. Ambil data transaksi asal
     const txRef = doc(db, "transactions", id);
     const txSnap = await getDoc(txRef);
     if(!txSnap.exists()) return;
     const tx = txSnap.data();
 
-    // 2. Hitung sisa baru
     const newPaid = (tx.paidAmount || 0) + payAmount;
     const newRemaining = (tx.total || 0) - newPaid;
     const isSettled = newRemaining <= 0.01;
-    
-    // 3. Update riwayat pembayaran di transaksi asal
     const updatedPayments = [...(tx.payments || []), { amount: payAmount, method: method, date: Date.now() }];
 
     await updateDoc(txRef, {
@@ -401,7 +459,6 @@ window.processLunasi = async () => {
       payments: updatedPayments
     });
 
-    // 4. 🔥 BUAT TRANSAKSI BARU (Bukti Pelunasan)
     const newTxRef = doc(collection(db, "transactions"));
     const newTxData = {
       id: newTxRef.id,
@@ -414,17 +471,14 @@ window.processLunasi = async () => {
       settled: true,
       paidAmount: payAmount,
       remainingAmount: 0,
-      originalTxId: tx.id // Link ke transaksi asal
+      originalTxId: tx.id
     };
     
     await setDoc(newTxRef, newTxData);
 
-    // 5. Feedback & Tampilkan Bukti
     const msg = isSettled ? '✅ Transaksi LUNAS! Saldo & Hutang otomatis terupdate.' : `✅ Dibayar ${fmtR(payAmount)}. Sisa: ${fmtR(Math.max(0, newRemaining))}`;
     showToast(msg, 'success');
     closeModal('modalLunasi');
-    
-    // Tampilkan bukti untuk transaksi BARU (tanggalnya real-time sekarang)
     showReceipt({ ...newTxData, timestamp: Date.now() });
   } catch (error) {
     console.error("Error processing payment:", error);
@@ -533,7 +587,6 @@ function renderTxItem(tx) {
   const no = tx.customNo || tx.id.substring(0,8).toUpperCase();
   const typeStr = (tx.type || 'TX').toUpperCase();
   const payMethod = tx.paymentMethod || tx.payment || '-';
-  // Label khusus untuk pembayaran bon di list
   const displayType = tx.type === 'pembayaran_bon' ? 'LUNAS BON' : typeStr;
   const statusTag = tx.settled ? '<span class="tag tag-lunas">LUNAS</span>' : (tx.remainingAmount > 0 ? `<span class="tag tag-partial">BELUM LUNAS (Sisa: ${fmtR(tx.remainingAmount)})</span>` : '');
   
