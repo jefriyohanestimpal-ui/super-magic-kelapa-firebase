@@ -3,62 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>🥥 Cocoa Jefmanado - Kelapa Trading</title>
+    <title>🥥 Jefmanado - Kelapa Trading</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0077B6">
     <style>
         :root { --primary: #0077B6; --primary-dark: #023E8A; --primary-light: #00B4D8; --accent: #0096C7; --success: #06D6A0; --danger: #EF476F; --warning: #FFD166; --dark: #1B2A4A; --gray: #6C757D; --gray-light: #E9ECEF; --shadow: 0 4px 15px rgba(0,119,182,0.15); --radius: 16px; --radius-sm: 10px; --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #0077B6 0%, #00B4D8 30%, #90E0EF 60%, #CAF0F8 80%, #FFFFFF 100%); min-height: 100vh; color: var(--dark); overflow-x: hidden; padding-bottom: 90px; }
-        
-        /* Login Screen */
         #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-card { background: white; border-radius: 20px; padding: 30px 25px; width: 100%; max-width: 360px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); text-align: center; }
         .login-logo { font-size: 48px; margin-bottom: 10px; } .login-title { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; } .login-sub { font-size: 13px; color: var(--gray); margin-bottom: 25px; } .login-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 16px; font-weight: 600; } .login-footer { margin-top: 20px; font-size: 11px; color: var(--gray); }
-
-        /* Header & Nav */
         .app-header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); padding: 15px 15px 20px; color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; } .header-left { display: flex; align-items: center; gap: 10px; }
         .logo-container { position: relative; cursor: pointer; } .header-logo { width: 42px; height: 42px; border-radius: 10px; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 2px 8px rgba(0,0,0,0.2); } .logo-placeholder { font-size: 34px; line-height: 1; } .logo-edit-icon { position: absolute; bottom: -3px; right: -3px; background: var(--warning); color: var(--dark); border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid white; }
         .app-title { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; } .app-title span { color: var(--warning); } .header-time { font-size: 13px; opacity: 0.9; font-weight: 500; } .header-date { font-size: 11px; opacity: 0.8; margin-top: 2px; }
         .logout-btn { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); } .logout-btn:active { background: rgba(255,255,255,0.3); transform: scale(0.95); }
         .balance-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: var(--radius); padding: 15px; margin-top: 10px; border: 1px solid rgba(255,255,255,0.2); } .balance-label { font-size: 12px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; } .balance-amount { font-size: 26px; font-weight: 800; margin-top: 2px; } .balance-row { display: flex; gap: 15px; margin-top: 8px; } .balance-item { font-size: 11px; opacity: 0.85; } .balance-item strong { font-size: 14px; display: block; margin-top: 2px; }
-        
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 8px 5px 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 100; border-top: 1px solid var(--gray-light); }
         .nav-item { display: flex; flex-direction: column; align-items: center; padding: 5px 8px; border-radius: 12px; cursor: pointer; transition: var(--transition); min-width: 55px; border: none; background: none; color: var(--gray); font-size: 10px; font-weight: 600; } .nav-item.active { color: var(--primary); background: rgba(0,119,182,0.1); } .nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
-
-        /* Pages & Cards */
         .page { display: none; padding: 15px; animation: fadeIn 0.3s ease; } .page.active { display: block; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .card { background: white; border-radius: var(--radius); padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.8); } .card-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .form-group { margin-bottom: 14px; } .form-label { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; display: block; } .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition); background: white; color: var(--dark); } .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,119,182,0.1); } .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        
         .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 4px 15px rgba(0,119,182,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
-        
         .toggle-group { display: flex; background: var(--gray-light); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 15px; } .toggle-btn { flex: 1; padding: 10px; border: none; background: transparent; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); color: var(--gray); } .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        
-        /* Transaction Items */
         .tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; } .tag-jual { background: #D4EDDA; color: #155724; } .tag-beli { background: #FFF3CD; color: #856404; } .tag-keluar { background: #F8D7DA; color: #721C24; } .tag-modal { background: #D1ECF1; color: #0C5460; } .tag-lunas { background: #C3E6CB; color: #155724; } .tag-bon { background: #F8D7DA; color: #721C24; }
         .tx-list { display: flex; flex-direction: column; gap: 10px; } .tx-item { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); transition: var(--transition); } .tx-item.jual { border-left-color: var(--success); } .tx-item.beli { border-left-color: var(--warning); } .tx-item.keluar { border-left-color: var(--danger); } .tx-item.modal { border-left-color: var(--primary-light); }
         .tx-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; } .tx-time { font-size: 11px; color: var(--gray); } .tx-detail { font-size: 13px; color: var(--gray); margin-bottom: 5px; } .tx-amount { font-size: 18px; font-weight: 800; color: var(--dark); } .tx-amount.income { color: var(--success); } .tx-amount.expense { color: var(--danger); } .tx-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--gray-light); }
         .tx-actions { display: flex; gap: 5px; } .tx-actions button { padding: 5px 10px; border: none; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: var(--transition); } .tx-actions .btn-edit { background: #E3F2FD; color: #1565C0; } .tx-actions .btn-delete { background: #FFEBEE; color: #C62828; } .tx-actions .btn-lunasi { background: #E8F5E9; color: #2E7D32; } .tx-actions .btn-print { background: #F3E5F5; color: #7B1FA2; }
-        
-        /* Stock Table & Modals */
         .stock-table { width: 100%; border-collapse: collapse; } .stock-table th, .stock-table td { padding: 12px 10px; text-align: left; font-size: 13px; } .stock-table th { background: var(--gray-light); font-weight: 700; color: var(--dark); } .stock-table th:first-child { border-radius: 8px 0 0 0; } .stock-table th:last-child { border-radius: 0 8px 0 0; } .stock-table td { border-bottom: 1px solid var(--gray-light); }
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: flex-end; justify-content: center; backdrop-filter: blur(4px); } .modal-overlay.show { display: flex; } .modal-content { background: white; border-radius: var(--radius) var(--radius) 0 0; padding: 25px 20px 30px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; animation: slideUp 0.3s ease; } @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } } .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; } .modal-title { font-size: 18px; font-weight: 800; } .modal-close { width: 32px; height: 32px; border: none; background: var(--gray-light); border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        
-        /* Stats & Filters */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; } .stat-card { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); } .stat-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; } .stat-value { font-size: 20px; font-weight: 800; margin-top: 4px; color: var(--dark); } .stat-value.green { color: var(--success); } .stat-value.red { color: var(--danger); } .stat-value.blue { color: var(--primary); }
         .filter-bar { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; } .filter-btn { padding: 8px 14px; border: 2px solid var(--gray-light); background: white; border-radius: 20px; font-size: 12px; font-weight: 600; cursor: pointer; transition: var(--transition); } .filter-btn.active { border-color: var(--primary); background: var(--primary); color: white; }
-        
-        /* Receipt & Debt */
         .receipt { background: white; padding: 20px; font-family: 'Courier New', monospace; font-size: 12px; max-width: 300px; margin: 0 auto; } .receipt-header { text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 10px; } .receipt-row { display: flex; justify-content: space-between; padding: 3px 0; } .receipt-divider { border-top: 2px dashed #ccc; margin: 10px 0; } .receipt-total { font-size: 16px; font-weight: 800; text-align: center; padding: 8px 0; } .receipt-footer { text-align: center; border-top: 2px dashed #ccc; padding-top: 10px; margin-top: 10px; }
         .debt-card { background: white; border-radius: var(--radius); padding: 15px; margin-bottom: 10px; box-shadow: var(--shadow); border-left: 4px solid var(--danger); } .debt-header { display: flex; justify-content: space-between; align-items: center; } .debt-name { font-weight: 700; font-size: 15px; } .debt-amount { font-size: 18px; font-weight: 800; color: var(--danger); } .debt-detail { font-size: 12px; color: var(--gray); margin-top: 5px; } .debt-actions { margin-top: 10px; display: flex; gap: 8px; }
-        
-        /* Search & Report */
         .search-box { position: relative; margin-bottom: 15px; } .search-box input { width: 100%; padding: 12px 15px 12px 40px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; background: white; } .search-box svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--gray); }
         .report-summary { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; border-radius: var(--radius); padding: 20px; margin-bottom: 15px; } .report-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 14px; } .report-row.total { border-top: 2px solid rgba(255,255,255,0.3); margin-top: 8px; padding-top: 12px; font-size: 18px; font-weight: 800; }
-        
-        /* Misc */
         .empty-state { text-align: center; padding: 40px 20px; color: var(--gray); } .empty-state h3 { font-size: 16px; margin-bottom: 5px; color: var(--dark); } .empty-state p { font-size: 13px; }
         .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; } .quick-action { background: white; border-radius: var(--radius); padding: 18px 15px; text-align: center; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); border: none; width: 100%; } .quick-action:active { transform: scale(0.95); } .quick-action svg { width: 32px; height: 32px; margin-bottom: 8px; } .quick-action span { font-size: 12px; font-weight: 700; color: var(--dark); }
         .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: var(--dark); color: white; padding: 12px 20px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; z-index: 300; transition: transform 0.3s ease; box-shadow: var(--shadow-lg); text-align: center; max-width: 90%; } .toast.show { transform: translateX(-50%) translateY(0); } .toast.success { background: var(--success); } .toast.error { background: var(--danger); }
@@ -72,10 +51,8 @@
 <div class="offline-banner" id="offlineBanner">⚠️ Mode Offline - Data tersimpan lokal</div>
 <div class="toast" id="toast"></div>
 
-<!-- LOGIN SCREEN -->
-<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Cocoa Je</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
+<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Jefmanado</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
 
-<!-- MAIN APP -->
 <div id="appContainer" style="display:none;">
     <header class="app-header"><div class="header-top"><div class="header-left"><div class="logo-container" onclick="document.getElementById('logoInput').click()"><img id="headerLogo" class="header-logo" style="display:none;"><span id="logoPlaceholder" class="logo-placeholder">🥥</span><span class="logo-edit-icon">📷</span></div><input type="file" id="logoInput" accept="image/*" style="display:none;" onchange="handleLogoUpload(this)"><div><div class="app-title">🥥 Super <span>Magic</span></div><div class="header-date" id="headerDate"></div></div></div><div style="display:flex;align-items:center;gap:10px;"><div class="header-time" id="headerTime"></div><button class="logout-btn" onclick="handleLogout()">🚪 Keluar</button></div></div><div class="balance-card"><div class="balance-label">💰 Saldo Saat Ini</div><div class="balance-amount" id="currentBalance">Rp 0</div><div class="balance-row"><div class="balance-item"><span>📈 Pemasukan Hari Ini</span><strong id="todayIncome">Rp 0</strong></div><div class="balance-item"><span>📉 Pengeluaran Hari Ini</span><strong id="todayExpense">Rp 0</strong></div></div></div></header>
 
@@ -89,12 +66,14 @@
     
     <div class="page" id="pageLaporan"><div class="card"><div class="card-title">📈 Laporan Keuangan</div><div class="form-group"><label class="form-label">Filter Periode</label><div class="filter-bar"><button class="filter-btn active" onclick="setReportPeriod('hari', this)">Hari Ini</button><button class="filter-btn" onclick="setReportPeriod('minggu', this)">Minggu Ini</button><button class="filter-btn" onclick="setReportPeriod('bulan', this)">Bulan Ini</button><button class="filter-btn" onclick="setReportPeriod('semua', this)">Semua</button><button class="filter-btn" onclick="setReportPeriod('custom', this)">Custom</button></div></div><div id="customDateRange" style="display:none;"><div class="input-row"><div class="form-group"><label class="form-label">Dari Tanggal</label><input type="date" class="form-input" id="dateFrom"></div><div class="form-group"><label class="form-label">Sampai Tanggal</label><input type="date" class="form-input" id="dateTo"></div></div><button class="btn btn-primary btn-sm" onclick="generateReport()" style="width:auto;margin-bottom:15px;">Terapkan</button></div><div id="reportContent"></div></div></div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Cocoa management</a>. All rights by.Jefmanado.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="https://tv-parabol.blogspot.com/p/blog-page_6.html">Jefmanado</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
-    <!-- Modals -->
-    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value=""><div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total: <strong id="txTotal">Rp 0</strong></label></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
+    <div class="modal-overlay" id="modalTransaction"><div class="modal-content"><div class="modal-header"><div class="modal-title" id="modalTitle">Tambah Transaksi</div><button class="modal-close" onclick="closeModal('modalTransaction')">✕</button></div><div class="toggle-group" id="typeToggle"><button class="toggle-btn active" onclick="setTxType('jual')">💰 Jual</button><button class="toggle-btn" onclick="setTxType('beli')">🛒 Beli</button><button class="toggle-btn" onclick="setTxType('keluar')">📤 Keluar</button><button class="toggle-btn" onclick="setTxType('modal')">💵 Modal</button></div><input type="hidden" id="editTxId" value="">
+    <div class="form-group"><label class="form-label">No. Transaksi (Opsional)</label><input type="text" class="form-input" id="txNoTransaksi" placeholder="Kosongkan untuk auto-generate"></div>
+    <div id="productFields"><div class="form-group"><label class="form-label">Produk</label><select class="form-select" id="txProduct"><option value="kelapa_biji">🥥 Kelapa Biji (kg)</option><option value="kopra">🌴 Kopra (kg)</option><option value="sabut">🧶 Sabut (karung)</option><option value="tempurung">🪨 Tempurung (kg)</option><option value="bricket">🧱 Bricket (kg)</option></select></div><div class="input-row"><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txQty" placeholder="0" step="0.01"></div><div class="form-group"><label class="form-label">Harga per Satuan</label><input type="number" class="form-input" id="txPrice" placeholder="0"></div></div><div class="form-group"><label class="form-label">Total: <strong id="txTotal">Rp 0</strong></label></div></div><div id="expenseFields" style="display:none;"><div class="form-group"><label class="form-label">Keterangan</label><input type="text" class="form-input" id="txDesc" placeholder="Keterangan pengeluaran/modal"></div><div class="form-group"><label class="form-label">Jumlah</label><input type="number" class="form-input" id="txAmount" placeholder="0"></div></div><div class="form-group"><label class="form-label">Nama Pelanggan / Pemasok</label><input type="text" class="form-input" id="txPerson" placeholder="Nama (opsional)"></div><div class="form-group"><label class="form-label">Metode Pembayaran</label><div class="toggle-group"><button class="toggle-btn active" onclick="setPayment('tunai')" id="payTunai">💵 Tunai</button><button class="toggle-btn" onclick="setPayment('transfer')" id="payTransfer">🏦 Transfer</button><button class="toggle-btn" onclick="setPayment('bon')" id="payBon">📋 Bon</button></div></div><div class="form-group"><label class="form-label">Catatan</label><input type="text" class="form-input" id="txNote" placeholder="Catatan tambahan (opsional)"></div><button class="btn btn-success" onclick="saveTransaction()">💾 Simpan Transaksi</button></div></div>
+    
     <div class="modal-overlay" id="modalReceipt"><div class="modal-content"><div class="modal-header"><div class="modal-title">🧾 Struk / Bukti</div><button class="modal-close" onclick="closeModal('modalReceipt')">✕</button></div><div id="receiptContent"></div><div class="btn-group" style="margin-top:15px;"><button class="btn btn-primary" onclick="printReceipt()">🖨️ Cetak</button><button class="btn btn-outline" onclick="closeModal('modalReceipt')">Tutup</button></div></div></div>
     <div class="modal-overlay" id="modalLunasi"><div class="modal-content"><div class="modal-header"><div class="modal-title">💳 Lunasi Bon / Hutang</div><button class="modal-close" onclick="closeModal('modalLunasi')">✕</button></div><input type="hidden" id="lunasiTxId" value=""><div id="lunasiInfo"></div><div class="form-group"><label class="form-label">Jumlah Dibayar</label><input type="number" class="form-input" id="lunasiAmount" placeholder="0"></div><div class="form-group"><label class="form-label">Metode</label><select class="form-select" id="lunasiMethod"><option value="tunai">Tunai</option><option value="transfer">Transfer</option></select></div><button class="btn btn-success" onclick="processLunasi()">✅ Lunasi</button></div></div>
     <div class="modal-overlay" id="modalEdit"><div class="modal-content"><div class="modal-header"><div class="modal-title">✏️ Edit Transaksi</div><button class="modal-close" onclick="closeModal('modalEdit')">✕</button></div><input type="hidden" id="editOriginalId" value=""><div id="editForm"></div><button class="btn btn-primary" onclick="saveEdit()" style="margin-top:15px;">💾 Simpan Perubahan</button></div></div>
@@ -103,16 +82,15 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// 🔑 PASTE FIREBASE CONFIG DI SINI
 const firebaseConfig = {
-  apiKey: "AIzaSyAKT8aRt3ngwLcIhmXd0EgF6dtr5Ny1oD0",
-  authDomain: "super-magic-kelapa.firebaseapp.com",
-  projectId: "super-magic-kelapa",
-  storageBucket: "super-magic-kelapa.firebasestorage.app",
-  messagingSenderId: "191516235325",
-  appId: "1:191516235325:web:8d5d07d472569cdc42bc54"
+  apiKey: "GANTI_DENGAN_API_KEY",
+  authDomain: "PROJECT_ID.firebaseapp.com",
+  projectId: "PROJECT_ID",
+  storageBucket: "PROJECT_ID.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -123,7 +101,6 @@ enableIndexedDbPersistence(db).catch(() => console.warn("Offline aktif"));
 window.appState = { db, auth, tx: [], stock: {}, settings: {} };
 window.currentTxType = 'jual'; window.currentPayment = 'tunai'; window.currentFilter = 'semua'; window.currentReportPeriod = 'hari';
 
-// Auth Listener
 onAuthStateChanged(auth, (user) => {
   if (user) { 
     document.getElementById('loginScreen').style.display='none'; 
@@ -135,25 +112,15 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// === FUNGSI GLOBAL (DIEXPOSE KE WINDOW) ===
-
 window.handleLogin = async () => {
   const u = document.getElementById('loginUser').value.trim();
   const p = document.getElementById('loginPass').value;
   const err = document.getElementById('loginError');
-  try { 
-    await signInWithEmailAndPassword(auth, u, p); 
-    err.textContent = '';
-  } catch (e) { 
-    err.textContent = 'Email atau password salah'; 
-  }
+  try { await signInWithEmailAndPassword(auth, u, p); err.textContent = ''; } 
+  catch (e) { err.textContent = 'Email atau password salah'; }
 };
 
-window.handleLogout = async () => {
-  if(!confirm('Yakin keluar?')) return;
-  await signOut(auth);
-};
-
+window.handleLogout = async () => { if(!confirm('Yakin keluar?')) return; await signOut(auth); };
 window.closeModal = (id) => document.getElementById(id).classList.remove('show');
 window.openModal = (id) => document.getElementById(id).classList.add('show');
 
@@ -204,12 +171,11 @@ window.setPayment = (m) => {
 };
 
 function resetTxForm() {
-  ['txProduct','txQty','txPrice','txDesc','txAmount','txPerson','txNote'].forEach(id => document.getElementById(id).value = '');
+  ['txProduct','txQty','txPrice','txDesc','txAmount','txPerson','txNote','txNoTransaksi'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('txProduct').value = 'kelapa_biji';
   document.getElementById('txTotal').textContent = 'Rp 0';
 }
 
-// Auto calculate total
 document.addEventListener('input', (e) => {
   if (e.target.id === 'txQty' || e.target.id === 'txPrice') {
     const qty = parseFloat(document.getElementById('txQty').value) || 0;
@@ -218,8 +184,37 @@ document.addEventListener('input', (e) => {
   }
 });
 
+// 🔥 FUNGSI UPDATE STOK YANG DIPERBAIKI
+async function updateStock(product, qtyChange) {
+  try {
+    const stockRef = doc(db, "stock", product);
+    const stockSnap = await getDoc(stockRef);
+    
+    let currentQty = 0;
+    if (stockSnap.exists()) {
+      currentQty = stockSnap.data().qty || 0;
+    }
+    
+    const newQty = currentQty + qtyChange;
+    const finalQty = newQty < 0 ? 0 : newQty;
+    
+    await setDoc(stockRef, {
+      product: product,
+      qty: finalQty,
+      lastUpdated: serverTimestamp()
+    }, { merge: true });
+    
+    console.log(`✅ Stok ${product} updated: ${currentQty} → ${finalQty} (change: ${qtyChange})`);
+  } catch (error) {
+    console.error('❌ Error update stok:', error);
+    showToast('⚠️ Gagal update stok', 'error');
+  }
+}
+
 window.saveTransaction = async () => {
   const eId = document.getElementById('editTxId').value;
+  const customNo = document.getElementById('txNoTransaksi').value.trim();
+  
   let tx = { 
     id: eId || crypto.randomUUID(), 
     type: window.currentTxType, 
@@ -229,7 +224,8 @@ window.saveTransaction = async () => {
     note: document.getElementById('txNote').value.trim(), 
     settled: false, 
     paidAmount: 0, 
-    remainingAmount: 0 
+    remainingAmount: 0,
+    customNo: customNo || null
   };
   
   if (window.currentTxType === 'jual' || window.currentTxType === 'beli') {
@@ -251,24 +247,26 @@ window.saveTransaction = async () => {
   else tx.paidAmount = tx.total;
   
   await setDoc(doc(db, "transactions", tx.id), tx);
-  if(tx.type === 'jual' || tx.type === 'beli') await updateStock(tx.product, window.currentTxType === 'jual' ? -tx.qty : tx.qty);
   
-  showToast('✅ Transaksi disimpan!', 'success'); 
+  // 🔥 UPDATE STOK OTOMATIS
+  if(tx.type === 'jual' || tx.type === 'beli') {
+    const stockChange = tx.type === 'jual' ? -tx.qty : tx.qty; // Jual = kurangi, Beli = tambah
+    await updateStock(tx.product, stockChange);
+    showToast(`✅ Transaksi disimpan! Stok ${tx.type === 'jual' ? 'berkurang' : 'bertambah'} ${Math.abs(tx.qty)}`, 'success');
+  } else {
+    showToast('✅ Transaksi disimpan!', 'success');
+  }
+  
   closeModal('modalTransaction'); 
   showReceipt(tx);
 };
 
-async function updateStock(product, qty) {
-  let s = window.appState.stock[product] || { product, qty: 0 };
-  s.qty += qty;
-  if(s.qty < 0) s.qty = 0;
-  await setDoc(doc(db, "stock", product), s);
-}
-
 window.showReceipt = (tx) => {
   const p = tx.product ? PRODUCTS[tx.product] : null;
+  const displayNo = tx.customNo || tx.id.substring(0,8);
+  
   let html = `<div class="receipt" id="printableReceipt">
-    <div class="receipt-header"><h3>🥥 Super Magic</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${tx.id.substring(0,8)}</div></div>
+    <div class="receipt-header"><h3>🥥 Jefmanado</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div>
     <div class="receipt-divider"></div>`;
   if(p) html += `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div><div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div><div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>`;
   else html += `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`;
@@ -384,7 +382,6 @@ window.setReportPeriod = (p, btn) => {
   if(p !== 'custom') generateReport();
 };
 
-// Helper functions
 const PRODUCTS = {
   kelapa_biji: { name: 'Kelapa Biji', unit: 'kg', icon: '🥥' },
   kopra: { name: 'Kopra', unit: 'kg', icon: '🌴' },
@@ -413,7 +410,10 @@ function initRealtimeSync() {
   
   onSnapshot(collection(db, "stock"), (snap) => {
     window.appState.stock = {};
-    snap.forEach(d => window.appState.stock[d.id] = d.data());
+    snap.forEach(d => {
+      const data = d.data();
+      window.appState.stock[d.id] = data;
+    });
     renderStock();
   });
   
@@ -436,8 +436,9 @@ function refreshDashboard() {
 }
 
 function renderTxItem(tx) {
+  const no = tx.customNo || tx.id.substring(0,8);
   return `<div class="tx-item ${tx.type}">
-    <div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>${fmtD(tx.timestamp)}</span></div>
+    <div class="tx-header"><span>${tx.type.toUpperCase()}</span><span>#${no}</span></div>
     <div class="tx-amount">${fmtR(tx.total)}</div>
     <div class="tx-actions">
       <button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button>
@@ -456,9 +457,22 @@ function renderTxHistory() {
 
 function renderStock() {
   const tbody = document.getElementById('stockTableBody');
-  tbody.innerHTML = Object.entries(window.appState.stock).map(([id, s]) => 
-    `<tr><td>${id}</td><td>${s.qty}</td></tr>`
-  ).join('') || '<tr><td colspan="2">Belum ada data</td></tr>';
+  const products = ['kelapa_biji', 'kopra', 'sabut', 'tempurung', 'bricket'];
+  
+  let html = '';
+  products.forEach(prodId => {
+    const stockData = window.appState.stock[prodId];
+    const product = PRODUCTS[prodId];
+    const qty = stockData ? stockData.qty : 0;
+    
+    html += `<tr>
+      <td>${product.icon} ${product.name}</td>
+      <td><strong>${qty}</strong></td>
+      <td>${product.unit}</td>
+    </tr>`;
+  });
+  
+  tbody.innerHTML = html || '<tr><td colspan="3">Belum ada data</td></tr>';
 }
 
 function renderDebts() {
@@ -472,14 +486,12 @@ function generateReport() {
   document.getElementById('reportContent').innerHTML = '<div class="card">Laporan - Fitur lengkap bisa ditambahkan</div>';
 }
 
-// Clock
 setInterval(() => {
   const n = new Date();
   document.getElementById('headerTime').textContent = n.toLocaleTimeString('id-ID');
   document.getElementById('headerDate').textContent = n.toLocaleDateString('id-ID', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
 }, 1000);
 
-// Offline detection
 window.addEventListener('online', () => document.getElementById('offlineBanner').classList.remove('show'));
 window.addEventListener('offline', () => document.getElementById('offlineBanner').classList.add('show'));
 </script>
