@@ -27,7 +27,7 @@
         .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 4px 15px rgba(0,119,182,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
         .toggle-group { display: flex; background: var(--gray-light); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 15px; } .toggle-btn { flex: 1; padding: 10px; border: none; background: transparent; border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; transition: var(--transition); color: var(--gray); } .toggle-btn.active { background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; } .tag-jual { background: #D4EDDA; color: #155724; } .tag-beli { background: #FFF3CD; color: #856404; } .tag-keluar { background: #F8D7DA; color: #721C24; } .tag-modal { background: #D1ECF1; color: #0C5460; } .tag-lunas { background: #C3E6CB; color: #155724; } .tag-bon { background: #F8D7DA; color: #721C24; } .tag-partial { background: #FFF3CD; color: #856404; }
-        .tx-list { display: flex; flex-direction: column; gap: 10px; } .tx-item { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); transition: var(--transition); } .tx-item.jual { border-left-color: var(--success); } .tx-item.beli { border-left-color: var(--warning); } .tx-item.keluar { border-left-color: var(--danger); } .tx-item.modal { border-left-color: var(--primary-light); }
+        .tx-list { display: flex; flex-direction: column; gap: 10px; } .tx-item { background: white; border-radius: var(--radius); padding: 15px; box-shadow: var(--shadow); border-left: 4px solid var(--primary); transition: var(--transition); } .tx-item.jual { border-left-color: var(--success); } .tx-item.beli { border-left-color: var(--warning); } .tx-item.keluar { border-left-color: var(--danger); } .tx-item.modal { border-left-color: var(--primary-light); } .tx-item.pembayaran_bon { border-left-color: var(--primary-dark); }
         .tx-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; } .tx-time { font-size: 11px; color: var(--gray); } .tx-detail { font-size: 13px; color: var(--gray); margin-bottom: 5px; } .tx-amount { font-size: 18px; font-weight: 800; color: var(--dark); } .tx-amount.income { color: var(--success); } .tx-amount.expense { color: var(--danger); } .tx-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--gray-light); }
         .tx-actions { display: flex; gap: 5px; } .tx-actions button { padding: 5px 10px; border: none; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: var(--transition); } .tx-actions .btn-edit { background: #E3F2FD; color: #1565C0; } .tx-actions .btn-delete { background: #FFEBEE; color: #C62828; } .tx-actions .btn-lunasi { background: #E8F5E9; color: #2E7D32; } .tx-actions .btn-print { background: #F3E5F5; color: #7B1FA2; }
         .stock-table { width: 100%; border-collapse: collapse; } .stock-table th, .stock-table td { padding: 12px 10px; text-align: left; font-size: 13px; } .stock-table th { background: var(--gray-light); font-weight: 700; color: var(--dark); } .stock-table th:first-child { border-radius: 8px 0 0 0; } .stock-table th:last-child { border-radius: 0 8px 0 0; } .stock-table td { border-bottom: 1px solid var(--gray-light); }
@@ -44,8 +44,6 @@
         .offline-banner { background: var(--warning); color: var(--dark); text-align: center; padding: 8px; font-size: 12px; font-weight: 700; display: none; } .offline-banner.show { display: block; }
         .chip { display: inline-block; padding: 4px 10px; border-radius: 15px; font-size: 11px; font-weight: 600; background: var(--gray-light); color: var(--gray); } .chip.active { background: var(--primary); color: white; }
         .app-copyright { text-align: center; padding: 20px 10px 10px; font-size: 11px; color: rgba(27,42,74,0.5); margin-top: 10px; } .app-copyright a { color: var(--primary); text-decoration: none; font-weight: 600; }
-        
-        /* Table Styles for Detailed Report */
         .detail-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; }
         .detail-table th { background: var(--primary-dark); color: white; padding: 10px; text-align: left; font-weight: 600; }
         .detail-table td { padding: 8px; border-bottom: 1px solid var(--gray-light); }
@@ -53,22 +51,9 @@
         .detail-table .income { color: var(--success); font-weight: 600; }
         .detail-table .expense { color: var(--danger); font-weight: 600; }
         .report-actions { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
-        
-        @media print { 
-            body * { visibility: hidden; } 
-            .receipt, .receipt * { visibility: visible; } 
-            .receipt { position: absolute; left: 0; top: 0; }
-            #printableReport, #printableReport * { visibility: visible; }
-            #printableReport { position: absolute; left: 0; top: 0; width: 100%; }
-            .no-print { display: none !important; }
-        } 
-        ::-webkit-scrollbar { width: 4px; } 
-        ::-webkit-scrollbar-track { background: transparent; } 
-        ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 4px; } 
-        @media (min-width: 600px) { 
-            .page { max-width: 500px; margin: 0 auto; } 
-            .modal-content { max-width: 500px; border-radius: var(--radius); margin: auto; } 
-        }
+        @media print { body * { visibility: hidden; } .receipt, .receipt * { visibility: visible; } .receipt { position: absolute; left: 0; top: 0; } #printableReport, #printableReport * { visibility: visible; } #printableReport { position: absolute; left: 0; top: 0; width: 100%; } .no-print { display: none !important; } } 
+        ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 4px; } 
+        @media (min-width: 600px) { .page { max-width: 500px; margin: 0 auto; } .modal-content { max-width: 500px; border-radius: var(--radius); margin: auto; } }
     </style>
 </head>
 <body>
@@ -108,7 +93,7 @@
         </div>
     </div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Jefmanado</a>. All rights reserved.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">by. Jefmanado</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
@@ -309,16 +294,55 @@ window.saveTransaction = async () => {
 
 window.showReceipt = (tx) => {
   const p = tx.product ? PRODUCTS[tx.product] : null;
-  const displayNo = tx.customNo || tx.id.substring(0,8);
-  // 🔥 PERBAIKAN: Gunakan paymentMethod atau fallback ke payment (untuk data lama)
+  const displayNo = tx.customNo || tx.id.substring(0,8).toUpperCase();
   const payMethod = (tx.paymentMethod || tx.payment || 'TUNAI').toUpperCase();
   
-  let html = `<div class="receipt" id="printableReceipt"><div class="receipt-header"><h3>🥥 Super Magic</h3><div>Komoditi Kelapa</div><div style="font-size:10px">${fmtD(tx.timestamp)}</div><div style="font-size:10px">No: ${displayNo}</div></div><div class="receipt-divider"></div>`;
-  if(p) html += `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div><div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div><div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>`;
-  else html += `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`;
-  html += `<div class="receipt-row"><span>Total</span><span>${fmtR(tx.total)}</span></div><div class="receipt-row"><span>Dibayar</span><span>${fmtR(tx.paidAmount||0)}</span></div>${tx.remainingAmount>0?`<div class="receipt-row"><span>Sisa</span><span>${fmtR(tx.remainingAmount)}</span></div>`:''}
-  <div class="receipt-divider"></div><div class="receipt-row"><span>Bayar</span><span>${payMethod}</span></div><div class="receipt-footer"><div>Terima kasih!</div></div></div>`;
-  document.getElementById('receiptContent').innerHTML = html; 
+  // Header khusus untuk Pelunasan
+  let headerTitle = tx.type === 'pembayaran_bon' ? 'BUKTI PELUNASAN' : '🥥 SUPER MAGIC';
+  let headerSub = tx.type === 'pembayaran_bon' ? 'Nota Pembayaran Hutang' : 'Komoditi Kelapa';
+  let contentHtml = '';
+
+  if(tx.type === 'pembayaran_bon') {
+     contentHtml = `
+        <div class="receipt" id="printableReceipt">
+          <div class="receipt-header">
+            <h3>${headerTitle}</h3>
+            <div>${headerSub}</div>
+            <div style="font-size:10px; margin-top:5px">${fmtD(tx.timestamp)}</div>
+            <div style="font-size:10px">No: ${displayNo}</div>
+          </div>
+          <div class="receipt-divider"></div>
+          <div class="receipt-row"><span>Nama</span><span>${tx.person || '-'}</span></div>
+          <div class="receipt-row"><span>Keterangan</span><span>${tx.note || 'Pelunasan'}</span></div>
+          <div class="receipt-row"><span>Metode</span><span>${payMethod}</span></div>
+          <div class="receipt-divider"></div>
+          <div class="receipt-row"><span>JUMLAH DIBAYAR</span><span style="font-weight:bold">${fmtR(tx.total)}</span></div>
+          <div class="receipt-footer"><div>Transaksi ini sebagai bukti pembayaran yang sah.</div><div style="font-size:10px; margin-top:5px">Terima kasih!</div></div>
+        </div>`;
+  } else {
+      contentHtml = `
+        <div class="receipt" id="printableReceipt">
+          <div class="receipt-header">
+            <h3>${headerTitle}</h3>
+            <div>${headerSub}</div>
+            <div style="font-size:10px; margin-top:5px">${fmtD(tx.timestamp)}</div>
+            <div style="font-size:10px">No: ${displayNo}</div>
+          </div>
+          <div class="receipt-divider"></div>
+          ${p ? `<div class="receipt-row"><span>Produk</span><span>${p.name}</span></div>
+                 <div class="receipt-row"><span>Jumlah</span><span>${tx.qty} ${p.unit}</span></div>
+                 <div class="receipt-row"><span>Harga</span><span>${fmtR(tx.price)}</span></div>` : 
+                 `<div class="receipt-row"><span>Keterangan</span><span>${tx.description||'-'}</span></div>`}
+          <div class="receipt-row"><span>Total</span><span>${fmtR(tx.total)}</span></div>
+          <div class="receipt-row"><span>Dibayar</span><span>${fmtR(tx.paidAmount||0)}</span></div>
+          ${tx.remainingAmount>0?`<div class="receipt-row"><span>Sisa</span><span>${fmtR(tx.remainingAmount)}</span></div>`:''}
+          <div class="receipt-divider"></div>
+          <div class="receipt-row"><span>Bayar</span><span>${payMethod}</span></div>
+          <div class="receipt-footer"><div>Terima kasih!</div></div>
+        </div>`;
+  }
+  
+  document.getElementById('receiptContent').innerHTML = contentHtml; 
   openModal('modalReceipt');
 };
 
@@ -346,6 +370,7 @@ window.openLunasi = (tx) => {
   openModal('modalLunasi');
 };
 
+// 🔥 FUNGSI LUNASI YANG DIPERBARUI (Membuat Transaksi Terpisah)
 window.processLunasi = async () => {
   const id = document.getElementById('lunasiTxId').value;
   const amountEl = document.getElementById('lunasiAmount');
@@ -355,16 +380,19 @@ window.processLunasi = async () => {
   if(payAmount <= 0) return showToast('⚠️ Masukkan jumlah valid', 'error');
 
   try {
+    // 1. Ambil data transaksi asal
     const txRef = doc(db, "transactions", id);
     const txSnap = await getDoc(txRef);
     if(!txSnap.exists()) return;
     const tx = txSnap.data();
 
+    // 2. Hitung sisa baru
     const newPaid = (tx.paidAmount || 0) + payAmount;
     const newRemaining = (tx.total || 0) - newPaid;
     const isSettled = newRemaining <= 0.01;
-    const newPayment = { amount: payAmount, method: method, date: Date.now() };
-    const updatedPayments = [...(tx.payments || []), newPayment];
+    
+    // 3. Update riwayat pembayaran di transaksi asal
+    const updatedPayments = [...(tx.payments || []), { amount: payAmount, method: method, date: Date.now() }];
 
     await updateDoc(txRef, {
       paidAmount: newPaid,
@@ -373,9 +401,31 @@ window.processLunasi = async () => {
       payments: updatedPayments
     });
 
+    // 4. 🔥 BUAT TRANSAKSI BARU (Bukti Pelunasan)
+    const newTxRef = doc(collection(db, "transactions"));
+    const newTxData = {
+      id: newTxRef.id,
+      type: 'pembayaran_bon',
+      timestamp: serverTimestamp(),
+      total: payAmount,
+      paymentMethod: method,
+      person: tx.person || 'Pelanggan',
+      note: `Pelunasan transaksi ${tx.customNo || id.substring(0, 8)}`,
+      settled: true,
+      paidAmount: payAmount,
+      remainingAmount: 0,
+      originalTxId: tx.id // Link ke transaksi asal
+    };
+    
+    await setDoc(newTxRef, newTxData);
+
+    // 5. Feedback & Tampilkan Bukti
     const msg = isSettled ? '✅ Transaksi LUNAS! Saldo & Hutang otomatis terupdate.' : `✅ Dibayar ${fmtR(payAmount)}. Sisa: ${fmtR(Math.max(0, newRemaining))}`;
     showToast(msg, 'success');
     closeModal('modalLunasi');
+    
+    // Tampilkan bukti untuk transaksi BARU (tanggalnya real-time sekarang)
+    showReceipt({ ...newTxData, timestamp: Date.now() });
   } catch (error) {
     console.error("Error processing payment:", error);
     showToast('❌ Error: ' + error.message, 'error');
@@ -480,13 +530,14 @@ function refreshDashboard() {
 }
 
 function renderTxItem(tx) {
-  const no = tx.customNo || tx.id.substring(0,8);
-  // 🔥 PERBAIKAN: Aman untuk tx.type yang undefined
+  const no = tx.customNo || tx.id.substring(0,8).toUpperCase();
   const typeStr = (tx.type || 'TX').toUpperCase();
   const payMethod = tx.paymentMethod || tx.payment || '-';
+  // Label khusus untuk pembayaran bon di list
+  const displayType = tx.type === 'pembayaran_bon' ? 'LUNAS BON' : typeStr;
   const statusTag = tx.settled ? '<span class="tag tag-lunas">LUNAS</span>' : (tx.remainingAmount > 0 ? `<span class="tag tag-partial">BELUM LUNAS (Sisa: ${fmtR(tx.remainingAmount)})</span>` : '');
   
-  return `<div class="tx-item ${tx.type || 'default'}"><div class="tx-header"><span>${typeStr}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${payMethod}</span></div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button>` : ''}</div></div></div>`;
+  return `<div class="tx-item ${tx.type || 'default'}"><div class="tx-header"><span>${displayType}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${payMethod}</span></div><div class="tx-actions"><button class="btn-print" onclick="showReceipt(window.appState.tx.find(t=>t.id='${tx.id}'))">🖨️</button><button class="btn-edit" onclick="editTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">✏️</button><button class="btn-delete" onclick="deleteTransaction(window.appState.tx.find(t=>t.id='${tx.id}'))">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi(window.appState.tx.find(t=>t.id='${tx.id}'))">💳 Lunasi</button>` : ''}</div></div></div>`;
 }
 
 function renderTxHistory() {
@@ -560,8 +611,9 @@ window.generateReport = () => {
     const date = fmtDateTime(tx.timestamp);
     const desc = tx.product 
       ? `${PRODUCTS[tx.product]?.icon || ''} ${PRODUCTS[tx.product]?.name || tx.product} - ${tx.qty} ${PRODUCTS[tx.product]?.unit || ''}`
-      : (tx.description || '-');
+      : (tx.note || tx.description || '-');
     const person = tx.person ? ` (${tx.person})` : '';
+    const typeLabel = tx.type === 'pembayaran_bon' ? 'PELUNASAN' : (tx.type || 'TX').toUpperCase();
     
     let income = 0, expense = 0;
     const paid = tx.paidAmount || 0;
@@ -576,7 +628,7 @@ window.generateReport = () => {
       <tr>
         <td>${date}</td>
         <td>${no}</td>
-        <td>${tx.type ? tx.type.toUpperCase() : 'TX'}${person}<br><small style="color:var(--gray)">${desc}</small></td>
+        <td>${typeLabel}${person}<br><small style="color:var(--gray)">${desc}</small></td>
         <td class="income">${income > 0 ? fmtR(income) : '-'}</td>
         <td class="expense">${expense > 0 ? fmtR(expense) : '-'}</td>
       </tr>
@@ -678,9 +730,10 @@ window.exportToExcel = () => {
     const no = tx.customNo || tx.id.substring(0,8).toUpperCase();
     const desc = tx.product 
       ? `${PRODUCTS[tx.product]?.name || tx.product} - ${tx.qty} ${PRODUCTS[tx.product]?.unit || ''}`
-      : (tx.description || '-');
+      : (tx.note || tx.description || '-');
     const person = tx.person ? ` (${tx.person})` : '';
     const paid = tx.paidAmount || 0;
+    const typeLabel = tx.type === 'pembayaran_bon' ? 'PELUNASAN' : (tx.type || 'TX').toUpperCase();
     
     let income = 0, expense = 0;
     if(tx.type === 'jual' || tx.type === 'pembayaran_bon' || tx.type === 'modal') {
@@ -689,7 +742,7 @@ window.exportToExcel = () => {
       expense = paid;
     }
     
-    csv += `"${date}","${no}","${(tx.type || 'TX').toUpperCase()}${person} - ${desc}",${income},${expense}\n`;
+    csv += `"${date}","${no}","${typeLabel}${person} - ${desc}",${income},${expense}\n`;
   });
   
   csv += `\n"TOTAL","","",${data.totalIncome},${data.totalExpense}\n`;
