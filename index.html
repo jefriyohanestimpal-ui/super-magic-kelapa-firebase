@@ -25,30 +25,14 @@
         /* 🖥️ LAYOUT RESPONSIVE UNTUK PC */
         @media (min-width: 1000px) {
             .page {
-                max-width: 1100px; /* Melebar di PC */
+                max-width: 1100px;
                 margin: 20px auto;
             }
-            .quick-actions { 
-                grid-template-columns: repeat(4, 1fr); /* 4 tombol sejajar */
-                gap: 15px;
-            }
-            .stats-grid { 
-                grid-template-columns: repeat(4, 1fr); /* 4 kartu sejajar */
-                gap: 15px;
-            }
+            .quick-actions { grid-template-columns: repeat(4, 1fr); gap: 15px; }
+            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 15px; }
             .card { padding: 25px; }
-            .modal-content {
-                max-width: 700px; /* Modal lebih lebar */
-                border-radius: var(--radius);
-                margin: 40px auto; /* Posisi di tengah */
-            }
-            .bottom-nav {
-                max-width: 1100px;
-                left: 50%;
-                transform: translateX(-50%);
-                border-radius: 20px 20px 0 0;
-                box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
-            }
+            .modal-content { max-width: 700px; border-radius: var(--radius); margin: 40px auto; }
+            .bottom-nav { max-width: 1100px; left: 50%; transform: translateX(-50%); border-radius: 20px 20px 0 0; }
         }
 
         #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #047857 0%, #059669 50%, #10B981 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
@@ -183,6 +167,19 @@
             </div>
             <div id="reportContent"></div>
         </div>
+
+        <!-- 🔥 FITUR BARU: BACKUP & RESTORE DATA -->
+        <div class="card" style="border: 2px dashed var(--primary-light); background: #f0fdf4;">
+            <div class="card-title">💾 Backup & Restore Data</div>
+            <p style="font-size: 13px; color: var(--gray); margin-bottom: 15px;">
+                Simpan data aplikasi Anda ke dalam file JSON untuk jaga-jaga, atau pulihkan data dari file backup sebelumnya.
+            </p>
+            <div class="btn-group" style="gap: 10px;">
+                <button class="btn btn-primary" onclick="backupData()" style="flex:1;">📥 Backup Data (Download)</button>
+                <button class="btn btn-outline" onclick="document.getElementById('restoreFileInput').click()" style="flex:1;">📤 Restore Data (Upload)</button>
+                <input type="file" id="restoreFileInput" style="display: none;" accept=".json" onchange="restoreData(this)">
+            </div>
+        </div>
     </div>
     
     <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Jefmanado</a>. All rights reserved.</div>
@@ -201,7 +198,7 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, enableIndexedDbPersistence, collection, doc, setDoc, onSnapshot, query, orderBy, serverTimestamp, deleteDoc, getDoc, updateDoc, getDocs, writeBatch } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAKT8aRt3ngwLcIhmXd0EgF6dtr5Ny1oD0",
@@ -579,6 +576,99 @@ window.deleteTransaction = async (txId) => {
   if(!confirm('Hapus transaksi ini?')) return; 
   await deleteDoc(doc(db, "transactions", txId)); 
   showToast('🗑️ Dihapus', 'success'); 
+};
+
+// 🔥 FITUR BARU: BACKUP & RESTORE DATA
+window.backupData = async () => {
+    showToast('⏳ Sedang menyiapkan backup...', 'info');
+    try {
+        const data = {};
+        
+        // Ambil semua koleksi
+        const collections = ['transactions', 'stock', 'settings'];
+        for (const col of collections) {
+            const snapshot = await getDocs(collection(db, col));
+            data[col] = [];
+            snapshot.forEach(doc => {
+                data[col].push({ id: doc.id, ...doc.data() });
+            });
+        }
+
+        // Download JSON
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `SuperMagic_Backup_${new Date().toISOString().slice(0,10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        showToast('✅ Backup berhasil diunduh!', 'success');
+    } catch (error) {
+        console.error("Backup failed:", error);
+        showToast('❌ Gagal backup: ' + error.message, 'error');
+    }
+};
+
+window.restoreData = async (input) => {
+    const file = input.files[0];
+    if (!file) return;
+
+    if (!confirm('⚠️ PERINGATAN: Restore akan MENIMPA semua data saat ini dengan data dari file backup. Lanjutkan?')) {
+        input.value = ''; // Reset input
+        return;
+    }
+
+    showToast('⏳ Sedang memulihkan data...', 'info');
+
+    try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        
+        if (!data.transactions || !data.stock) {
+            throw new Error('Format file tidak valid.');
+        }
+
+        const batch = writeBatch(db);
+        let count = 0;
+
+        // Restore Transactions
+        data.transactions.forEach(item => {
+            const ref = doc(db, "transactions", item.id);
+            batch.set(ref, item);
+            count++;
+        });
+
+        // Restore Stock
+        data.stock.forEach(item => {
+            const ref = doc(db, "stock", item.id);
+            batch.set(ref, item);
+            count++;
+        });
+
+        // Restore Settings
+        if (data.settings) {
+            data.settings.forEach(item => {
+                const ref = doc(db, "settings", item.id);
+                batch.set(ref, item);
+                count++;
+            });
+        }
+
+        await batch.commit();
+        showToast(`✅ Data berhasil dipulihkan! (${count} data)`, 'success');
+        
+        // Refresh halaman untuk melihat perubahan
+        setTimeout(() => location.reload(), 1500);
+
+    } catch (error) {
+        console.error("Restore failed:", error);
+        showToast('❌ Gagal restore: ' + error.message, 'error');
+    } finally {
+        input.value = ''; // Reset input agar bisa pilih file yang sama lagi
+    }
 };
 
 window.adjustStock = async () => { const p = document.getElementById('adjustProduct').value; const q = parseFloat(document.getElementById('adjustQty').value); if(!q || q === 0) { showToast('⚠️ Jumlah tidak valid', 'error'); return; } await updateStock(p, q); showToast('✅ Stok disesuaikan', 'success'); };
