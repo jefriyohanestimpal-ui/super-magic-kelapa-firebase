@@ -22,11 +22,39 @@
             min-height: 100vh; color: var(--dark); overflow-x: hidden; padding-bottom: 90px; 
         }
         
+        /* 🖥️ LAYOUT RESPONSIVE UNTUK PC */
+        @media (min-width: 1000px) {
+            .page {
+                max-width: 1100px; /* Melebar di PC */
+                margin: 20px auto;
+            }
+            .quick-actions { 
+                grid-template-columns: repeat(4, 1fr); /* 4 tombol sejajar */
+                gap: 15px;
+            }
+            .stats-grid { 
+                grid-template-columns: repeat(4, 1fr); /* 4 kartu sejajar */
+                gap: 15px;
+            }
+            .card { padding: 25px; }
+            .modal-content {
+                max-width: 700px; /* Modal lebih lebar */
+                border-radius: var(--radius);
+                margin: 40px auto; /* Posisi di tengah */
+            }
+            .bottom-nav {
+                max-width: 1100px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 20px 20px 0 0;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+            }
+        }
+
         #loginScreen { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #047857 0%, #059669 50%, #10B981 100%); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 20px; }
         .login-card { background: white; border-radius: 20px; padding: 30px 25px; width: 100%; max-width: 360px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); text-align: center; }
         .login-logo { font-size: 48px; margin-bottom: 10px; } .login-title { font-size: 24px; font-weight: 800; color: var(--primary-dark); margin-bottom: 5px; } .login-sub { font-size: 13px; color: var(--gray); margin-bottom: 25px; } .login-error { color: var(--danger); font-size: 12px; margin-bottom: 10px; min-height: 16px; font-weight: 600; } .login-footer { margin-top: 20px; font-size: 11px; color: var(--gray); }
         
-        /*  HEADER HIJAU & COMPACT */
         .app-header { 
             background: linear-gradient(135deg, var(--primary-dark), var(--primary)); 
             padding: 8px 15px 12px; 
@@ -36,6 +64,8 @@
             z-index: 100; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
         }
+        @media (min-width: 1000px) { .app-header { max-width: 1100px; margin: 0 auto; border-radius: 0 0 20px 20px; } }
+        
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; } 
         .header-left { display: flex; align-items: center; gap: 8px; }
         .logo-container { position: relative; cursor: pointer; } 
@@ -58,7 +88,7 @@
 
         .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: white; display: flex; justify-content: space-around; padding: 8px 5px 12px; box-shadow: 0 -4px 20px rgba(0,0,0,0.1); z-index: 100; border-top: 1px solid var(--gray-light); }
         .nav-item { display: flex; flex-direction: column; align-items: center; padding: 5px 8px; border-radius: 12px; cursor: pointer; transition: var(--transition); min-width: 55px; border: none; background: none; color: var(--gray); font-size: 10px; font-weight: 600; } .nav-item.active { color: var(--primary); background: rgba(5,150,105,0.1); } .nav-item svg { width: 22px; height: 22px; margin-bottom: 3px; }
-        .page { display: none; padding: 15px; animation: fadeIn 0.3s ease; } .page.active { display: block; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .page { display: none; padding: 15px; animation: fadeIn 0.3s ease; max-width: 500px; margin: 0 auto; } .page.active { display: block; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .card { background: white; border-radius: var(--radius); padding: 20px; margin-bottom: 15px; box-shadow: var(--shadow); border: 1px solid rgba(255,255,255,0.8); } .card-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         .form-group { margin-bottom: 14px; } .form-label { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; display: block; } .form-input, .form-select, .form-textarea { width: 100%; padding: 12px 15px; border: 2px solid var(--gray-light); border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition); background: white; color: var(--dark); } .form-input:focus, .form-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(5,150,105,0.1); } .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .btn { padding: 12px 20px; border: none; border-radius: var(--radius-sm); font-size: 14px; font-weight: 700; cursor: pointer; transition: var(--transition); display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; } .btn:active { transform: scale(0.97); } .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; box-shadow: 0 4px 15px rgba(5,150,105,0.3); } .btn-success { background: linear-gradient(135deg, #06D6A0, #00B894); color: white; box-shadow: 0 4px 15px rgba(6,214,160,0.3); } .btn-danger { background: linear-gradient(135deg, #EF476F, #E63946); color: white; box-shadow: 0 4px 15px rgba(239,71,111,0.3); } .btn-warning { background: linear-gradient(135deg, #FFD166, #F4A261); color: var(--dark); box-shadow: 0 4px 15px rgba(255,209,102,0.3); } .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); } .btn-sm { padding: 8px 12px; font-size: 12px; width: auto; }
@@ -90,7 +120,6 @@
         .report-actions { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
         @media print { body * { visibility: hidden; } .receipt, .receipt * { visibility: visible; } .receipt { position: absolute; left: 0; top: 0; } #printableReport, #printableReport * { visibility: visible; } #printableReport { position: absolute; left: 0; top: 0; width: 100%; } .no-print { display: none !important; } } 
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--gray-light); border-radius: 4px; } 
-        @media (min-width: 600px) { .page { max-width: 500px; margin: 0 auto; } .modal-content { max-width: 500px; border-radius: var(--radius); margin: auto; } }
     </style>
 </head>
 <body>
@@ -156,7 +185,7 @@
         </div>
     </div>
     
-    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">by.Jefmanado</a>. All rights reserved.</div>
+    <div class="app-copyright">© <span id="copyYear"></span> <a href="#">Jefmanado</a>. All rights reserved.</div>
 
     <nav class="bottom-nav"><button class="nav-item active" onclick="switchPage('Dashboard', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span>Beranda</span></button><button class="nav-item" onclick="switchPage('Transaksi', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg><span>Histori</span></button><button class="nav-item" onclick="switchPage('Gudang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg><span>Gudang</span></button><button class="nav-item" onclick="switchPage('Hutang', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg><span>Hutang</span></button><button class="nav-item" onclick="switchPage('Laporan', this)"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg><span>Laporan</span></button></nav>
 
@@ -408,7 +437,6 @@ window.showReceipt = (tx) => {
   openModal('modalReceipt');
 };
 
-// 🔥 FUNGSI BARU UNTUK MENCETAK TRANSAKSI SPESIFIK
 window.printTransactionReceipt = (txId) => {
   const tx = window.appState.tx.find(t => t.id === txId);
   if (!tx) {
@@ -621,7 +649,6 @@ function renderTxItem(tx) {
   const displayType = tx.type === 'pembayaran_bon' ? 'LUNAS BON' : typeStr;
   const statusTag = tx.settled ? '<span class="tag tag-lunas">LUNAS</span>' : (tx.remainingAmount > 0 ? `<span class="tag tag-partial">BELUM LUNAS (Sisa: ${fmtR(tx.remainingAmount)})</span>` : '');
   
-  // 🔥 PERBAIKAN: Gunakan fungsi khusus yang menerima ID
   return `<div class="tx-item ${tx.type || 'default'}"><div class="tx-header"><span>${displayType}</span><span>#${no}</span></div><div class="tx-detail">${tx.product?PRODUCTS[tx.product]?.icon:''} ${tx.person||''}</div><div class="tx-amount">${fmtR(tx.total)}</div><div class="tx-footer"><div>${statusTag} <span class="chip">${payMethod}</span></div><div class="tx-actions"><button class="btn-print" onclick="printTransactionReceipt('${tx.id}')">🖨️</button><button class="btn-edit" onclick="editTransaction('${tx.id}')">✏️</button><button class="btn-delete" onclick="deleteTransaction('${tx.id}')">🗑️</button>${!tx.settled && tx.remainingAmount > 0 ? `<button class="btn-lunasi" onclick="openLunasi('${tx.id}')">💳 Lunasi</button>` : ''}</div></div></div>`;
 }
 
