@@ -110,9 +110,7 @@
 <div class="offline-banner" id="offlineBanner">⚠️ Mode Offline - Data tersimpan lokal</div>
 <div class="toast" id="toast"></div>
 
-<div id="loginScreen"><div class="login-card"><div class="login-logo">🥥</div><div class="login-title">Super Magic</div><div class="login-sub">Sistem Kasir Komoditi Kelapa</div><div class="login-error" id="loginError"></div><div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" id="loginUser" placeholder="admin@supermagic.com"></div><div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="loginPass" placeholder="••••••••"></div><button class="btn btn-primary" onclick="handleLogin()" style="margin-bottom:10px;">🔓 Masuk</button><div class="login-footer">Gunakan akun Firebase Auth</div></div></div>
-
-<div id="appContainer" style="display:none;">
+<div id="appContainer" style="display:block;">
     <header class="app-header">
         <div class="header-top">
             <div class="header-left">
@@ -234,13 +232,12 @@ async function initStock() {
   }
 }
 
-onAuthStateChanged(auth, async (user) => {
-  if (user) { document.getElementById('loginScreen').style.display='none'; document.getElementById('appContainer').style.display='block'; await initStock(); initRealtimeSync(); } 
-  else { document.getElementById('loginScreen').style.display='flex'; document.getElementById('appContainer').style.display='none'; }
-});
+// Langsung jalankan aplikasi tanpa menunggu login
+(async () => {
+  await initStock();
+  initRealtimeSync();
+})();
 
-window.handleLogin = async () => { const u = document.getElementById('loginUser').value.trim(); const p = document.getElementById('loginPass').value; const err = document.getElementById('loginError'); try { await signInWithEmailAndPassword(auth, u, p); err.textContent = ''; } catch (e) { err.textContent = 'Email atau password salah'; } };
-window.handleLogout = async () => { if(!confirm('Yakin keluar?')) return; await signOut(auth); };
 window.closeModal = (id) => document.getElementById(id).classList.remove('show');
 window.openModal = (id) => document.getElementById(id).classList.add('show');
 
